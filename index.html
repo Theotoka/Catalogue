@@ -81,9 +81,119 @@
         .hover\:bg-secondary:hover {
             background-color: var(--secondary-color);
         }
+
+        /* Ad Slider Styles */
+        .ad-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .ad-content {
+            background: white;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .ad-slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+        .ad-slide.active {
+            display: block;
+        }
+        .ad-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .ad-nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        .ad-nav-dot.active {
+            background: white;
+        }
+        .ad-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .ad-prev { left: 10px; }
+        .ad-next { right: 10px; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Ad Popup Modal -->
+    <div id="adModal" class="ad-modal">
+        <div class="ad-content">
+            <button id="closeAdModal" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 z-20 hover:bg-opacity-75">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <div class="relative">
+                <div class="ad-slide active">
+                    <img src="ad1.png" alt="Laboratory Design" class="w-full h-full object-cover">
+                </div>
+                <div class="ad-slide">
+                    <img src="ad2.png" alt="Laboratory Build" class="w-full h-full object-cover">
+                </div>
+                <div class="ad-slide">
+                    <img src="ad3.png" alt="Laboratory Restock" class="w-full h-full object-cover">
+                </div>
+                
+                <div class="ad-nav">
+                    <div class="ad-nav-dot active" data-slide="0"></div>
+                    <div class="ad-nav-dot" data-slide="1"></div>
+                    <div class="ad-nav-dot" data-slide="2"></div>
+                </div>
+                
+                <button class="ad-arrow ad-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button class="ad-arrow ad-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6 text-white">
+                <h2 class="text-2xl font-bold mb-2">We also design, build and restock laboratories</h2>
+                <p class="mb-4">Get in touch with us for all your laboratory needs</p>
+                <button onclick="window.open('https://wa.me/260977440435', '_blank')" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md font-medium">
+                    Contact Us
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="bg-blue-600 text-white">
         <div class="container mx-auto px-4 py-6">
@@ -2083,6 +2193,78 @@
 
         // Run initialization when DOM is loaded
         document.addEventListener('DOMContentLoaded', initialize);
+
+        // Ad Slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.ad-slide');
+        const dots = document.querySelectorAll('.ad-nav-dot');
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            showSlide((currentSlide + 1) % totalSlides);
+        }
+
+        function prevSlide() {
+            showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+        }
+
+        function startSlideShow() {
+            if (slideInterval) clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Initialize ad slider
+        function initAdSlider() {
+            // Add click events to navigation dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                    startSlideShow();
+                });
+            });
+
+            // Add click events to arrows
+            document.querySelector('.ad-next').addEventListener('click', () => {
+                nextSlide();
+                startSlideShow();
+            });
+            document.querySelector('.ad-prev').addEventListener('click', () => {
+                prevSlide();
+                startSlideShow();
+            });
+
+            startSlideShow();
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the ad slider immediately
+            initAdSlider();
+
+            // Close ad modal
+            document.getElementById('closeAdModal').addEventListener('click', function() {
+                document.getElementById('adModal').style.display = 'none';
+                if (slideInterval) clearInterval(slideInterval);
+            });
+
+            // Close modal when clicking outside
+            document.getElementById('adModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                    if (slideInterval) clearInterval(slideInterval);
+                }
+            });
+        });
     </script>
 </body>
 </html>
