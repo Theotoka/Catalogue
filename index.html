@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theotoka Laboratory Solutions - Product Catalogue</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .product-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .category-item {
+            cursor: pointer;
+        }
+        .subcategory-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .subcategory-list.active {
+            max-height: 500px;
+        }
+        #productGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        @media (max-width: 640px) {
+            #productGrid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        .spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #ff6b00;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        :root {
+            --primary-color: #ff6b00;
+            --secondary-color: #0066cc;
+        }
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+        .text-primary {
+            color: var(--primary-color);
+        }
+        .bg-secondary {
+            background-color: var(--secondary-color);
+        }
+        .text-secondary {
+            color: var(--secondary-color);
+        }
+        .hover\:text-primary:hover {
+            color: var(--primary-color);
+        }
+        .hover\:bg-primary:hover {
+            background-color: var(--primary-color);
+        }
+        .hover\:text-secondary:hover {
+            color: var(--secondary-color);
+        }
+        .hover\:bg-secondary:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center">
+                    <img src="logo.png" alt="Theotoka Laboratory Solutions Logo" class="h-12 w-auto mr-4">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold">Theotoka Laboratory Solutions</h1>
+                        <p class="text-blue-100 mt-1">Quality Laboratory Equipment & Supplies</p>
+                    </div>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center gap-4">
+                    <div class="relative">
+                        <input 
+                            type="search" 
+                            id="searchInput"
+                            placeholder="Search products..." 
+                            class="pl-10 pr-4 py-2 w-full md:w-64 text-gray-900 rounded-md"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md font-medium">
+                        Contact Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Construction Notice -->
+    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4">
+        <div class="container mx-auto">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-yellow-700">
+                        <strong>Notice:</strong> Our main website is currently under construction. This is a temporary catalogue for your convenience.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar -->
+            <div class="w-full lg:w-1/4">
+                <div class="bg-white rounded-lg border p-4 sticky top-4">
+                    <h2 class="text-lg font-semibold mb-4 text-gray-800">Product Categories</h2>
+                    
+                    <div id="categorySidebar" class="space-y-2">
+                        <!-- Categories will be populated here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Listing -->
+            <div class="w-full lg:w-3/4">
+                <div class="bg-gray-50 p-4 rounded-lg mb-6 border">
+                    <h2 class="text-xl font-semibold text-gray-800">Product Catalogue</h2>
+                    <p class="text-gray-600 mt-1">Browse our extensive range of laboratory equipment and supplies</p>
+
+                    <!-- Breadcrumbs -->
+                    <div class="flex items-center text-sm text-gray-500 mt-3">
+                        <span class="hover:text-orange-600">Home</span>
+                        <span class="mx-2">/</span>
+                        <span id="currentCategory" class="font-medium text-gray-700">All Products</span>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <select id="categoryFilter" class="px-3 py-2 border rounded-md text-sm bg-white">
+                        <option value="all">All Categories</option>
+                        <!-- Categories will be populated here by JavaScript -->
+                    </select>
+
+                    <select id="subcategoryFilter" class="px-3 py-2 border rounded-md text-sm bg-white">
+                        <option value="all">All Subcategories</option>
+                        <!-- Subcategories will be populated here based on selected category -->
+                    </select>
+
+                    <select id="sortFilter" class="px-3 py-2 border rounded-md text-sm bg-white">
+                        <option value="name-asc">Name: A-Z</option>
+                        <option value="name-desc">Name: Z-A</option>
+                        <option value="code-asc">Code: Ascending</option>
+                        <option value="code-desc">Code: Descending</option>
+                    </select>
+
+                    <button id="clearFilters" class="px-3 py-2 bg-orange-100 hover:bg-orange-200 text-orange-800 rounded-md text-sm">
+                        Clear Filters
+                    </button>
+                </div>
+
+                <!-- Product Count -->
+                <div class="mb-4">
+                    <p id="productCount" class="text-sm text-gray-600"></p>
+                </div>
+
+                <!-- Products -->
+                <div id="productGrid" class="grid-container">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t mt-8">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Theotoka Laboratory Solutions</h3>
+                    <p class="text-gray-600">
+                        Providing high-quality laboratory equipment and supplies for research, education, and industrial applications.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:text-orange-600">Home</a></li>
+                        <li><a href="#" class="hover:text-orange-600">Catalogue</a></li>
+                        <li><a href="#" class="hover:text-orange-600">About Us</a></li>
+                        <li><a href="#" class="hover:text-orange-600">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Contact Information</h3>
+                    <address class="not-italic text-gray-600">
+                        <p>189 Musonda Ngosa Road</p>
+                        <p>189 Luanshya Rd, Lusaka 10101</p>
+                        <p>Theotoka Laboratory Solutions Limited</p>
+                        <p class="mt-2">Email: sales@theotoka.com</p>
+                        <p>Website: www.theotoka.com</p>
+                        <p>Lusaka Office:</p>
+                        <p>0977440435</p>
+                        <p>0971950652</p>
+                        <p>0977440439</p>
+                        <p>0978345450</p>
+                        <p>Kitwe Office:</p>
+                        <p>0973582666</p>
+                    </address>
+                </div>
+            </div>
+            <div class="border-t mt-8 pt-6 text-center text-gray-600">
+                <p>&copy; <span id="currentYear"></span> Theotoka Laboratory Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-screen overflow-auto m-4">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span id="modalProductCode" class="inline-block bg-gray-100 text-gray-800 text-xs font-mono px-2 py-1 rounded mb-2"></span>
+                        <h2 id="modalProductName" class="text-2xl font-bold text-gray-900"></h2>
+                    </div>
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                        <img id="modalProductImage" src="/placeholder.svg" alt="" class="max-h-64 object-contain">
+                    </div>
+                    <div>
+                        <div class="mb-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Category</h3>
+                            <p id="modalProductCategory" class="text-gray-700"></p>
+                        </div>
+                        <div class="mb-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Subcategory</h3>
+                            <p id="modalProductSubcategory" class="text-gray-700"></p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">Description</h3>
+                            <p id="modalProductDescription" class="text-gray-700"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex justify-end gap-3">
+                    <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md" id="closeModalBtn">Close</button>
+                    <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md">Request Quote</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // All products data embedded directly in the HTML
+        const products = [
+  {
+    "code": "RG-CH-074",
+    "name": "Zinc Acetate AR 500g"
+  },
+  {
+    "code": "RG-CH-075",
+    "name": "Zinc Chloride AR 500g"
+  },
+  {
+    "code": "RG-CH-076",
+    "name": "Zinc Oxide AR 500g"
+  },
+  {
+    "code": "RG-CH-077",
+    "name": "Zinc Sulphate AR 500g"
+  },
+  {
+    "code": "RG-CH-078",
+    "name": "Zinc Sulphate Heptahydrate AR 500g"
+  },
+  {
+    "code": "RG-CH-079",
+    "name": "Zirconium Dioxide AR 100g"
+  },
+  {
+    "code": "RG-CH-080",
+    "name": "Zirconium Oxychloride AR 100g"
+  },
+  {
+    "code": "RG-CH-081",
+    "name": "Acetone AR 500ml"
+  },
+  {
+    "code": "RG-CH-082",
+    "name": "Acetic Acid Glacial AR 500ml"
+  },
+  {
+    "code": "RG-CH-083",
+    "name": "Ammonia Solution AR 500ml"
+  },
+  {
+    "code": "RG-CH-084",
+    "name": "Benzene AR 500ml"
+  },
+  {
+    "code": "RG-CH-085",
+    "name": "Carbon Tetrachloride AR 500ml"
+  },
+  {
+    "code": "RG-CH-086",
+    "name": "Chloroform AR 500ml"
+  },
+  {
+    "code": "RG-CH-087",
+    "name": "Diethyl Ether AR 500ml"
+  },
+  {
+    "code": "RG-CH-088",
+    "name": "Ethanol AR 500ml"
+  },
+  {
+    "code": "RG-CH-089",
+    "name": "Ethyl Acetate AR 500ml"
+  },
+  {
+    "code": "RG-CH-090",
+    "name": "Formaldehyde Solution AR 500ml"
+  },
+  {
+    "code": "RG-CH-091",
+    "name": "Formic Acid AR 500ml"
+  },
+  {
+    "code": "RG-CH-092",
+    "name": "Glycerol AR 500ml"
+  },
+  {
+    "code": "RG-CH-093",
+    "name": "Hexane AR 500ml"
+  },
+  {
+    "code": "RG-CH-094",
+    "name": "Hydrochloric Acid AR 500ml"
+  },
+  {
+    "code": "RG-CH-095",
+    "name": "Hydrogen Peroxide AR 500ml"
+  },
+  {
+    "code": "RG-CH-096",
+    "name": "Isopropanol AR 500ml"
+  },
+  {
+    "code": "RG-CH-097",
+    "name": "Methanol AR 500ml"
+  },
+  {
+    "code": "RG-CH-098",
+    "name": "Nitric Acid AR 500ml"
+  },
+  {
+    "code": "RG-CH-099",
+    "name": "Petroleum Ether AR 500ml"
+  },
+  {
+    "code": "RG-CH-100",
+    "name": "Phosphoric Acid AR 500ml"
+  },
+  {
+    "code": "RG-CH-101",
+    "name": "Sulphuric Acid AR 500ml"
+  },
+  {
+    "code": "RG-CH-102",
+    "name": "Toluene AR 500ml"
+  },
+  {
+    "code": "RG-CH-103",
+    "name": "Xylene AR 500ml"
+  },
+  {
+    "code": "RG-ST-001",
+    "name": "Crystal Violet 25g"
+  },
+  {
+    "code": "RG-ST-002",
+    "name": "Methylene Blue 25g"
+  },
+  {
+    "code": "RG-ST-003",
+    "name": "Congo Red 25g"
+  },
+  {
+    "code": "RG-ST-004",
+    "name": "Safranin 25g"
+  },
+  {
+    "code": "RG-ST-005",
+    "name": "Malachite Green 25g"
+  },
+  {
+    "code": "RG-ST-006",
+    "name": "Neutral Red 25g"
+  },
+  {
+    "code": "RG-ST-007",
+    "name": "Phenol Red 25g"
+  },
+  {
+    "code": "RG-ST-008",
+    "name": "Bromothymol Blue 25g"
+  },
+  {
+    "code": "RG-ST-009",
+    "name": "Phenolphthalein 25g"
+  },
+  {
+    "code": "RG-ST-010",
+    "name": "Universal Indicator 100ml"
+  },
+  {
+    "code": "RG-ST-011",
+    "name": "Iodine Solution 100ml"
+  },
+  {
+    "code": "RG-ST-012",
+    "name": "Lugol's Iodine 100ml"
+  },
+  {
+    "code": "RG-ST-013",
+    "name": "Eosin Y 25g"
+  },
+  {
+    "code": "RG-ST-014",
+    "name": "Hematoxylin 25g"
+  },
+  {
+    "code": "RG-ST-015",
+    "name": "Giemsa Powder 10g"
+  },
+  {
+    "code": "RG-AG-001",
+    "name": "Nutrient Agar 500g"
+  },
+  {
+    "code": "RG-AG-002",
+    "name": "MacConkey Agar 500g"
+  },
+  {
+    "code": "RG-AG-003",
+    "name": "Blood Agar Base 500g"
+  },
+  {
+    "code": "RG-AG-004",
+    "name": "Sabouraud Dextrose Agar 500g"
+  },
+  {
+    "code": "RG-AG-005",
+    "name": "Mueller Hinton Agar 500g"
+  },
+  {
+    "code": "RG-AG-006",
+    "name": "Chocolate Agar 500g"
+  },
+  {
+    "code": "RG-AG-007",
+    "name": "Mannitol Salt Agar 500g"
+  },
+  {
+    "code": "RG-AG-008",
+    "name": "EMB Agar 500g"
+  },
+  {
+    "code": "RG-AG-009",
+    "name": "TSA (Tryptic Soy Agar) 500g"
+  },
+  {
+    "code": "RG-AG-010",
+    "name": "LB Agar 500g"
+  },
+  {
+    "code": "RG-AG-011",
+    "name": "MacConkey Sorbitol Agar 500g"
+  },
+  {
+    "code": "RG-AG-012",
+    "name": "Cetrimide Agar 500g"
+  },
+  {
+    "code": "RG-AG-013",
+    "name": "XLD Agar 500g"
+  },
+  {
+    "code": "RG-AG-014",
+    "name": "SS Agar 500g"
+  },
+  {
+    "code": "RG-AG-015",
+    "name": "TCBS Agar 500g"
+  },
+  {
+    "code": "CS-PP-001",
+    "name": "Filter Paper Whatman No.1 100 sheets"
+  },
+  {
+    "code": "CS-PP-002",
+    "name": "Filter Paper Whatman No.4 100 sheets"
+  },
+  {
+    "code": "CS-PP-003",
+    "name": "Filter Paper Whatman No.42 100 sheets"
+  },
+  {
+    "code": "CS-PP-004",
+    "name": "Litmus Blue Paper 100 strips"
+  },
+  {
+    "code": "CS-PP-005",
+    "name": "Litmus Red Paper 100 strips"
+  },
+  {
+    "code": "CS-PP-006",
+    "name": "pH Paper Universal 100 strips"
+  },
+  {
+    "code": "CS-PP-007",
+    "name": "Chromatography Paper 100 sheets"
+  },
+  {
+    "code": "CS-PP-008",
+    "name": "Weighing Paper 500 sheets"
+  },
+  {
+    "code": "CS-PP-009",
+    "name": "Lens Cleaning Paper 100 sheets"
+  },
+  {
+    "code": "CS-PP-010",
+    "name": "Blotting Paper 100 sheets"
+  },
+  {
+    "code": "CS-DP-001",
+    "name": "Disposable Petri Dishes 90mm (Pack of 20)"
+  },
+  {
+    "code": "CS-DP-002",
+    "name": "Disposable Pipettes 1ml (Pack of 100)"
+  },
+  {
+    "code": "CS-DP-003",
+    "name": "Disposable Pipettes 5ml (Pack of 100)"
+  },
+  {
+    "code": "CS-DP-004",
+    "name": "Disposable Pipettes 10ml (Pack of 100)"
+  },
+  {
+    "code": "CS-DP-005",
+    "name": "Disposable Gloves Nitrile (Pack of 100)"
+  },
+  {
+    "code": "CS-DP-006",
+    "name": "Disposable Gloves Latex (Pack of 100)"
+  },
+  {
+    "code": "CS-DP-007",
+    "name": "Disposable Face Mask (Pack of 50)"
+  },
+  {
+    "code": "CS-DP-008",
+    "name": "Disposable Lab Coats (Pack of 10)"
+  },
+  {
+    "code": "CS-DP-009",
+    "name": "Disposable Shoe Covers (Pack of 100)"
+  },
+  {
+    "code": "CS-DP-010",
+    "name": "Disposable Hair Nets (Pack of 100)"
+  },
+  {
+    "code": "CS-DP-011",
+    "name": "Pipette Tips 10μl (Pack of 1000)"
+  },
+  {
+    "code": "CS-DP-012",
+    "name": "Pipette Tips 200μl (Pack of 1000)"
+  },
+  {
+    "code": "CS-DP-013",
+    "name": "Pipette Tips 1000μl (Pack of 1000)"
+  },
+  {
+    "code": "CS-DP-014",
+    "name": "Disposable Cuvettes (Pack of 100)"
+  },
+  {
+    "code": "CS-DP-015",
+    "name": "Disposable Inoculating Loops (Pack of 100)"
+  },
+  {
+    "code": "TL-CL-001",
+    "name": "Burette Clamp"
+  },
+  {
+    "code": "TL-CL-002",
+    "name": "Test Tube Clamp"
+  },
+  {
+    "code": "TL-CL-003",
+    "name": "Beaker Clamp"
+  },
+  {
+    "code": "TL-CL-004",
+    "name": "Flask Clamp"
+  },
+  {
+    "code": "TL-CL-005",
+    "name": "Condenser Clamp"
+  },
+  {
+    "code": "TL-CL-006",
+    "name": "Universal Clamp"
+  },
+  {
+    "code": "TL-CL-007",
+    "name": "Pinch Clamp"
+  },
+  {
+    "code": "TL-CL-008",
+    "name": "Screw Clamp"
+  },
+  {
+    "code": "TL-CL-009",
+    "name": "Joint Clips (Pack of 10)"
+  },
+  {
+    "code": "TL-CL-010",
+    "name": "Crocodile Clips (Pack of 10)"
+  },
+  {
+    "code": "TL-ST-001",
+    "name": "Glass Stirrer 200mm"
+  },
+  {
+    "code": "TL-ST-002",
+    "name": "Glass Stirrer 300mm"
+  },
+  {
+    "code": "TL-ST-003",
+    "name": "Magnetic Stirrer Bar 25mm"
+  },
+  {
+    "code": "TL-ST-004",
+    "name": "Magnetic Stirrer Bar 40mm"
+  },
+  {
+    "code": "TL-ST-005",
+    "name": "Retort Stand with Base"
+  },
+  {
+    "code": "TL-ST-006",
+    "name": "Retort Rod 600mm"
+  },
+  {
+    "code": "TL-ST-007",
+    "name": "Boss Head"
+  },
+  {
+    "code": "TL-ST-008",
+    "name": "Ring Support 75mm"
+  },
+  {
+    "code": "TL-ST-009",
+    "name": "Ring Support 100mm"
+  },
+  {
+    "code": "TL-ST-010",
+    "name": "Tripod Stand"
+  },
+  {
+    "code": "TL-ST-011",
+    "name": "Wire Gauze 150mm"
+  },
+  {
+    "code": "TL-ST-012",
+    "name": "Clay Triangle"
+  },
+  {
+    "code": "TL-ST-013",
+    "name": "Test Tube Rack Wooden (12 holes)"
+  },
+  {
+    "code": "TL-ST-014",
+    "name": "Test Tube Rack Plastic (24 holes)"
+  },
+  {
+    "code": "TL-ST-015",
+    "name": "Drying Rack"
+  },
+  {
+    "code": "EQ-EL-001",
+    "name": "Electronic Balance 0.01g"
+  },
+  {
+    "code": "EQ-EL-002",
+    "name": "Electronic Balance 0.001g"
+  },
+  {
+    "code": "EQ-EL-003",
+    "name": "pH Meter Digital"
+  },
+  {
+    "code": "EQ-EL-004",
+    "name": "Conductivity Meter"
+  },
+  {
+    "code": "EQ-EL-005",
+    "name": "Spectrophotometer UV-Vis"
+  },
+  {
+    "code": "EQ-EL-006",
+    "name": "Colorimeter"
+  },
+  {
+    "code": "EQ-EL-007",
+    "name": "Centrifuge Benchtop"
+  },
+  {
+    "code": "EQ-EL-008",
+    "name": "Magnetic Stirrer"
+  },
+  {
+    "code": "EQ-EL-009",
+    "name": "Magnetic Stirrer with Heating"
+  },
+  {
+    "code": "EQ-EL-010",
+    "name": "Heating Mantle 250ml"
+  },
+  {
+    "code": "EQ-EL-011",
+    "name": "Heating Mantle 500ml"
+  },
+  {
+    "code": "EQ-EL-012",
+    "name": "Heating Mantle 1000ml"
+  },
+  {
+    "code": "EQ-EL-013",
+    "name": "Hot Plate"
+  },
+  {
+    "code": "EQ-EL-014",
+    "name": "Water Bath"
+  },
+  {
+    "code": "EQ-EL-015",
+    "name": "Incubator"
+  },
+  {
+    "code": "EQ-EL-016",
+    "name": "Oven Laboratory"
+  },
+  {
+    "code": "EQ-EL-017",
+    "name": "Autoclave"
+  },
+  {
+    "code": "EQ-EL-018",
+    "name": "Laminar Flow Hood"
+  },
+  {
+    "code": "EQ-EL-019",
+    "name": "Fume Hood"
+  },
+  {
+    "code": "EQ-EL-020",
+    "name": "Vacuum Pump"
+  },
+  {
+    "code": "EQ-EL-021",
+    "name": "Rotary Evaporator"
+  },
+  {
+    "code": "EQ-EL-022",
+    "name": "Ultrasonic Bath"
+  },
+  {
+    "code": "EQ-EL-023",
+    "name": "Vortex Mixer"
+  },
+  {
+    "code": "EQ-EL-024",
+    "name": "Micropipette 10μl"
+  },
+  {
+    "code": "EQ-EL-025",
+    "name": "Micropipette 100μl"
+  },
+  {
+    "code": "EQ-EL-026",
+    "name": "Micropipette 1000μl"
+  },
+  {
+    "code": "EQ-EL-027",
+    "name": "Electrophoresis Unit"
+  },
+  {
+    "code": "EQ-EL-028",
+    "name": "Power Supply"
+  },
+  {
+    "code": "EQ-EL-029",
+    "name": "Gel Documentation System"
+  },
+  {
+    "code": "EQ-EL-030",
+    "name": "PCR Machine"
+  },
+  {
+    "code": "EQ-ME-001",
+    "name": "Mechanical Balance Triple Beam"
+  },
+  {
+    "code": "EQ-ME-002",
+    "name": "Spring Balance 1N"
+  },
+  {
+    "code": "EQ-ME-003",
+    "name": "Spring Balance 5N"
+  },
+  {
+    "code": "EQ-ME-004",
+    "name": "Spring Balance 10N"
+  },
+  {
+    "code": "EQ-ME-005",
+    "name": "Pulley Single Fixed"
+  },
+  {
+    "code": "EQ-ME-006",
+    "name": "Pulley Single Movable"
+  },
+  {
+    "code": "EQ-ME-007",
+    "name": "Pulley System Set"
+  },
+  {
+    "code": "EQ-ME-008",
+    "name": "Lever Demonstration Set"
+  },
+  {
+    "code": "EQ-ME-009",
+    "name": "Inclined Plane"
+  },
+  {
+    "code": "EQ-ME-010",
+    "name": "Pendulum Bobs Set"
+  },
+  {
+    "code": "EQ-ME-011",
+    "name": "Simple Pendulum"
+  },
+  {
+    "code": "EQ-ME-012",
+    "name": "Compound Pendulum"
+  },
+  {
+    "code": "EQ-ME-013",
+    "name": "Oscillation Apparatus"
+  },
+  {
+    "code": "EQ-ME-014",
+    "name": "Force Table"
+  },
+  {
+    "code": "EQ-ME-015",
+    "name": "Atwood Machine"
+  },
+  {
+    "code": "EQ-OP-001",
+    "name": "Microscope Compound"
+  },
+  {
+    "code": "EQ-OP-002",
+    "name": "Microscope Stereo"
+  },
+  {
+    "code": "EQ-OP-003",
+    "name": "Magnifying Glass 3x"
+  },
+  {
+    "code": "EQ-OP-004",
+    "name": "Magnifying Glass 5x"
+  },
+  {
+    "code": "EQ-OP-005",
+    "name": "Magnifying Glass 10x"
+  },
+  {
+    "code": "EQ-OP-006",
+    "name": "Hand Lens 10x"
+  },
+  {
+    "code": "EQ-OP-007",
+    "name": "Convex Lens 50mm"
+  },
+  {
+    "code": "EQ-OP-008",
+    "name": "Convex Lens 75mm"
+  },
+  {
+    "code": "EQ-OP-009",
+    "name": "Convex Lens 100mm"
+  },
+  {
+    "code": "EQ-OP-010",
+    "name": "Concave Lens 50mm"
+  },
+  {
+    "code": "EQ-OP-011",
+    "name": "Concave Lens 75mm"
+  },
+  {
+    "code": "EQ-OP-012",
+    "name": "Concave Lens 100mm"
+  },
+  {
+    "code": "EQ-OP-013",
+    "name": "Prism Equilateral"
+  },
+  {
+    "code": "EQ-OP-014",
+    "name": "Prism Right Angle"
+  },
+  {
+    "code": "EQ-OP-015",
+    "name": "Mirror Plane 75mm"
+  },
+  {
+    "code": "EQ-OP-016",
+    "name": "Mirror Concave 75mm"
+  },
+  {
+    "code": "EQ-OP-017",
+    "name": "Mirror Convex 75mm"
+  },
+  {
+    "code": "EQ-OP-018",
+    "name": "Optical Bench 1m"
+  },
+  {
+    "code": "EQ-OP-019",
+    "name": "Ray Box"
+  },
+  {
+    "code": "EQ-OP-020",
+    "name": "Laser Pointer"
+  },
+  {
+    "code": "EQ-MO-001",
+    "name": "Human Skeleton Model"
+  },
+  {
+    "code": "EQ-MO-002",
+    "name": "Human Skull Model"
+  },
+  {
+    "code": "EQ-MO-003",
+    "name": "Human Heart Model"
+  },
+  {
+    "code": "EQ-MO-004",
+    "name": "Human Brain Model"
+  },
+  {
+    "code": "EQ-MO-005",
+    "name": "Human Eye Model"
+  },
+  {
+    "code": "EQ-MO-006",
+    "name": "Human Ear Model"
+  },
+  {
+    "code": "EQ-MO-007",
+    "name": "Human Torso Model"
+  },
+  {
+    "code": "EQ-MO-008",
+    "name": "DNA Model"
+  },
+  {
+    "code": "EQ-MO-009",
+    "name": "Cell Model Plant"
+  },
+  {
+    "code": "EQ-MO-010",
+    "name": "Cell Model Animal"
+  },
+  {
+    "code": "EQ-MO-011",
+    "name": "Flower Model"
+  },
+  {
+    "code": "EQ-MO-012",
+    "name": "Leaf Model"
+  },
+  {
+    "code": "EQ-MO-013",
+    "name": "Root Model"
+  },
+  {
+    "code": "EQ-MO-014",
+    "name": "Molecular Model Set"
+  },
+  {
+    "code": "EQ-MO-015",
+    "name": "Crystal Structure Models"
+  },
+  {
+    "code": "GL-BK-001",
+    "name": "Glass Beaker 50ml"
+  },
+  {
+    "code": "GL-BK-002",
+    "name": "Glass Beaker 100ml"
+  },
+  {
+    "code": "GL-BK-003",
+    "name": "Glass Beaker 250ml"
+  },
+  {
+    "code": "GL-BK-004",
+    "name": "Glass Beaker 500ml"
+  },
+  {
+    "code": "GL-BK-005",
+    "name": "Glass Beaker 1000ml"
+  },
+  {
+    "code": "GL-BK-006",
+    "name": "Glass Beaker 2000ml"
+  },
+  {
+    "code": "GL-FL-001",
+    "name": "Conical Flask 100ml"
+  },
+  {
+    "code": "GL-FL-002",
+    "name": "Conical Flask 250ml"
+  },
+  {
+    "code": "GL-FL-003",
+    "name": "Conical Flask 500ml"
+  },
+  {
+    "code": "GL-FL-004",
+    "name": "Conical Flask 1000ml"
+  },
+  {
+    "code": "GL-FL-005",
+    "name": "Round Bottom Flask 100ml"
+  },
+  {
+    "code": "GL-FL-006",
+    "name": "Round Bottom Flask 250ml"
+  },
+  {
+    "code": "GL-FL-007",
+    "name": "Round Bottom Flask 500ml"
+  },
+  {
+    "code": "GL-FL-008",
+    "name": "Round Bottom Flask 1000ml"
+  },
+  {
+    "code": "GL-FL-009",
+    "name": "Flat Bottom Flask 100ml"
+  },
+  {
+    "code": "GL-FL-010",
+    "name": "Flat Bottom Flask 250ml"
+  },
+  {
+    "code": "GL-FL-011",
+    "name": "Flat Bottom Flask 500ml"
+  },
+  {
+    "code": "GL-FL-012",
+    "name": "Flat Bottom Flask 1000ml"
+  },
+  {
+    "code": "GL-FL-013",
+    "name": "Volumetric Flask 100ml"
+  },
+  {
+    "code": "GL-FL-014",
+    "name": "Volumetric Flask 250ml"
+  },
+  {
+    "code": "GL-FL-015",
+    "name": "Volumetric Flask 500ml"
+  },
+  {
+    "code": "GL-FL-016",
+    "name": "Volumetric Flask 1000ml"
+  },
+  {
+    "code": "GL-CY-001",
+    "name": "Glass Measuring Cylinder 10ml"
+  },
+  {
+    "code": "GL-CY-002",
+    "name": "Glass Measuring Cylinder 25ml"
+  },
+  {
+    "code": "GL-CY-003",
+    "name": "Glass Measuring Cylinder 50ml"
+  },
+  {
+    "code": "GL-CY-004",
+    "name": "Glass Measuring Cylinder 100ml"
+  },
+  {
+    "code": "GL-CY-005",
+    "name": "Glass Measuring Cylinder 250ml"
+  },
+  {
+    "code": "GL-CY-006",
+    "name": "Glass Measuring Cylinder 500ml"
+  },
+  {
+    "code": "GL-CY-007",
+    "name": "Glass Measuring Cylinder 1000ml"
+  },
+  {
+    "code": "GL-TB-001",
+    "name": "Test Tubes 15x150mm (Pack of 10)"
+  },
+  {
+    "code": "GL-TB-002",
+    "name": "Test Tubes 18x150mm (Pack of 10)"
+  },
+  {
+    "code": "GL-TB-003",
+    "name": "Test Tubes 20x150mm (Pack of 10)"
+  },
+  {
+    "code": "GL-TB-004",
+    "name": "Test Tubes 25x150mm (Pack of 10)"
+  },
+  {
+    "code": "GL-TB-005",
+    "name": "Test Tubes with Rim 15x150mm (Pack of 10)"
+  },
+  {
+    "code": "GL-TB-006",
+    "name": "Test Tubes with Rim 18x150mm (Pack of 10)"
+  },
+  {
+    "code": "GL-TB-007",
+    "name": "Boiling Tubes 25x200mm (Pack of 10)"
+  },
+  {
+    "code": "GL-TB-008",
+    "name": "Culture Tubes 16x150mm (Pack of 10)"
+  },
+  {
+    "code": "GL-TB-009",
+    "name": "Centrifuge Tubes 15ml (Pack of 10)"
+  },
+  {
+    "code": "GL-TB-010",
+    "name": "Centrifuge Tubes 50ml (Pack of 10)"
+  },
+  {
+    "code": "GL-FU-001",
+    "name": "Glass Funnel 50mm"
+  },
+  {
+    "code": "GL-FU-002",
+    "name": "Glass Funnel 75mm"
+  },
+  {
+    "code": "GL-FU-003",
+    "name": "Glass Funnel 100mm"
+  },
+  {
+    "code": "GL-FU-004",
+    "name": "Glass Funnel 125mm"
+  },
+  {
+    "code": "GL-FU-005",
+    "name": "Separating Funnel 100ml"
+  },
+  {
+    "code": "GL-FU-006",
+    "name": "Separating Funnel 250ml"
+  },
+  {
+    "code": "GL-FU-007",
+    "name": "Separating Funnel 500ml"
+  },
+  {
+    "code": "GL-FU-008",
+    "name": "Buchner Funnel 75mm"
+  },
+  {
+    "code": "GL-FU-009",
+    "name": "Buchner Funnel 100mm"
+  },
+  {
+    "code": "GL-FU-010",
+    "name": "Dropping Funnel 100ml"
+  },
+  {
+    "code": "PL-BK-001",
+    "name": "Plastic Beaker 50ml"
+  },
+  {
+    "code": "PL-BK-002",
+    "name": "Plastic Beaker 100ml"
+  },
+  {
+    "code": "PL-BK-003",
+    "name": "Plastic Beaker 250ml"
+  },
+  {
+    "code": "PL-BK-004",
+    "name": "Plastic Beaker 500ml"
+  },
+  {
+    "code": "PL-BK-005",
+    "name": "Plastic Beaker 1000ml"
+  },
+  {
+    "code": "PL-CY-001",
+    "name": "Plastic Measuring Cylinder 10ml"
+  },
+  {
+    "code": "PL-CY-002",
+    "name": "Plastic Measuring Cylinder 25ml"
+  },
+  {
+    "code": "PL-CY-003",
+    "name": "Plastic Measuring Cylinder 50ml"
+  },
+  {
+    "code": "PL-CY-004",
+    "name": "Plastic Measuring Cylinder 100ml"
+  },
+  {
+    "code": "PL-CY-005",
+    "name": "Plastic Measuring Cylinder 250ml"
+  },
+  {
+    "code": "PL-CY-006",
+    "name": "Plastic Measuring Cylinder 500ml"
+  },
+  {
+    "code": "PL-CY-007",
+    "name": "Plastic Measuring Cylinder 1000ml"
+  },
+  {
+    "code": "PL-TB-001",
+    "name": "Plastic Test Tubes 15x150mm (Pack of 10)"
+  },
+  {
+    "code": "PL-TB-002",
+    "name": "Plastic Test Tubes 18x150mm (Pack of 10)"
+  },
+  {
+    "code": "PL-TB-003",
+    "name": "Centrifuge Tube 15ml (Pack of 50)"
+  },
+  {
+    "code": "PL-TB-004",
+    "name": "Centrifuge Tube 50ml (Pack of 50)"
+  },
+  {
+    "code": "PL-TB-005",
+    "name": "Microcentrifuge Tube 1.5ml (Pack of 100)"
+  },
+  {
+    "code": "PL-TB-006",
+    "name": "Microcentrifuge Tube 2ml (Pack of 100)"
+  },
+  {
+    "code": "PL-TB-007",
+    "name": "PCR Tubes 0.2ml (Pack of 100)"
+  },
+  {
+    "code": "PL-TB-008",
+    "name": "Cryogenic Vials 1ml (Pack of 100)"
+  },
+  {
+    "code": "PL-TB-009",
+    "name": "Cryogenic Vials 2ml (Pack of 100)"
+  },
+  {
+    "code": "PL-TB-010",
+    "name": "Sample Vials 2ml (Pack of 100)"
+  },
+  {
+    "code": "RG-CH-001",
+    "name": "Sodium Chloride AR 500g"
+  },
+  {
+    "code": "RG-CH-002",
+    "name": "Potassium Chloride AR 500g"
+  },
+  {
+    "code": "RG-CH-003",
+    "name": "Calcium Chloride AR 500g"
+  },
+  {
+    "code": "RG-CH-004",
+    "name": "Magnesium Chloride AR 500g"
+  },
+  {
+    "code": "RG-CH-005",
+    "name": "Ammonium Chloride AR 500g"
+  },
+  {
+    "code": "RG-CH-006",
+    "name": "Sodium Hydroxide AR 500g"
+  },
+  {
+    "code": "RG-CH-007",
+    "name": "Potassium Hydroxide AR 500g"
+  },
+  {
+    "code": "RG-CH-008",
+    "name": "Calcium Hydroxide AR 500g"
+  },
+  {
+    "code": "RG-CH-009",
+    "name": "Sodium Carbonate AR 500g"
+  },
+  {
+    "code": "RG-CH-010",
+    "name": "Potassium Carbonate AR 500g"
+  },
+  {
+    "code": "RG-CH-011",
+    "name": "Calcium Carbonate AR 500g"
+  },
+  {
+    "code": "RG-CH-012",
+    "name": "Sodium Bicarbonate AR 500g"
+  },
+  {
+    "code": "RG-CH-013",
+    "name": "Potassium Bicarbonate AR 500g"
+  },
+  {
+    "code": "RG-CH-014",
+    "name": "Sodium Sulphate AR 500g"
+  },
+  {
+    "code": "RG-CH-015",
+    "name": "Potassium Sulphate AR 500g"
+  },
+  {
+    "code": "RG-CH-016",
+    "name": "Magnesium Sulphate AR 500g"
+  },
+  {
+    "code": "RG-CH-017",
+    "name": "Copper Sulphate AR 500g"
+  },
+  {
+    "code": "RG-CH-018",
+    "name": "Iron Sulphate AR 500g"
+  },
+  {
+    "code": "RG-CH-019",
+    "name": "Zinc Sulphate AR 500g"
+  },
+  {
+    "code": "RG-CH-020",
+    "name": "Aluminium Sulphate AR 500g"
+  },
+  {
+    "code": "RG-CH-021",
+    "name": "Sodium Nitrate AR 500g"
+  },
+  {
+    "code": "RG-CH-022",
+    "name": "Potassium Nitrate AR 500g"
+  },
+  {
+    "code": "RG-CH-023",
+    "name": "Calcium Nitrate AR 500g"
+  },
+  {
+    "code": "RG-CH-024",
+    "name": "Magnesium Nitrate AR 500g"
+  },
+  {
+    "code": "RG-CH-025",
+    "name": "Ammonium Nitrate AR 500g"
+  },
+  {
+    "code": "RG-CH-026",
+    "name": "Sodium Phosphate AR 500g"
+  },
+  {
+    "code": "RG-CH-027",
+    "name": "Potassium Phosphate AR 500g"
+  },
+  {
+    "code": "RG-CH-028",
+    "name": "Calcium Phosphate AR 500g"
+  },
+  {
+    "code": "RG-CH-029",
+    "name": "Sodium Acetate AR 500g"
+  },
+  {
+    "code": "RG-CH-030",
+    "name": "Potassium Acetate AR 500g"
+  },
+  {
+    "code": "RG-CH-031",
+    "name": "Calcium Acetate AR 500g"
+  },
+  {
+    "code": "RG-CH-032",
+    "name": "Sodium Citrate AR 500g"
+  },
+  {
+    "code": "RG-CH-033",
+    "name": "Potassium Citrate AR 500g"
+  },
+  {
+    "code": "RG-CH-034",
+    "name": "Citric Acid AR 500g"
+  },
+  {
+    "code": "RG-CH-035",
+    "name": "Tartaric Acid AR 500g"
+  },
+  {
+    "code": "RG-CH-036",
+    "name": "Oxalic Acid AR 500g"
+  },
+  {
+    "code": "RG-CH-037",
+    "name": "Succinic Acid AR 500g"
+  },
+  {
+    "code": "RG-CH-038",
+    "name": "Benzoic Acid AR 500g"
+  },
+  {
+    "code": "RG-CH-039",
+    "name": "Salicylic Acid AR 500g"
+  },
+  {
+    "code": "RG-CH-040",
+    "name": "Ascorbic Acid AR 500g"
+  },
+  {
+    "code": "RG-CH-041",
+    "name": "Glucose AR 500g"
+  },
+  {
+    "code": "RG-CH-042",
+    "name": "Fructose AR 500g"
+  },
+  {
+    "code": "RG-CH-043",
+    "name": "Sucrose AR 500g"
+  },
+  {
+    "code": "RG-CH-044",
+    "name": "Lactose AR 500g"
+  },
+  {
+    "code": "RG-CH-045",
+    "name": "Starch AR 500g"
+  },
+  {
+    "code": "RG-CH-046",
+    "name": "Cellulose AR 500g"
+  },
+  {
+    "code": "RG-CH-047",
+    "name": "Urea AR 500g"
+  },
+  {
+    "code": "RG-CH-048",
+    "name": "Thiourea AR 500g"
+  },
+  {
+    "code": "RG-CH-049",
+    "name": "Phenol AR 500g"
+  },
+  {
+    "code": "RG-CH-050",
+    "name": "Aniline AR 500g"
+  },
+  {
+    "code": "RG-CH-051",
+    "name": "Benzaldehyde AR 500g"
+  },
+  {
+    "code": "RG-CH-052",
+    "name": "Acetaldehyde AR 500g"
+  },
+  {
+    "code": "RG-CH-053",
+    "name": "Formaldehyde AR 500g"
+  },
+  {
+    "code": "RG-CH-054",
+    "name": "Acetone AR 500g"
+  },
+  {
+    "code": "RG-CH-055",
+    "name": "Methyl Ethyl Ketone AR 500g"
+  },
+  {
+    "code": "RG-CH-056",
+    "name": "Diethyl Ether AR 500g"
+  },
+  {
+    "code": "RG-CH-057",
+    "name": "Petroleum Ether AR 500g"
+  },
+  {
+    "code": "RG-CH-058",
+    "name": "Chloroform AR 500g"
+  },
+  {
+    "code": "RG-CH-059",
+    "name": "Carbon Tetrachloride AR 500g"
+  },
+  {
+    "code": "RG-CH-060",
+    "name": "Dichloromethane AR 500g"
+  },
+  {
+    "code": "RG-CH-061",
+    "name": "Ethyl Acetate AR 500g"
+  },
+  {
+    "code": "RG-CH-062",
+    "name": "Methyl Acetate AR 500g"
+  },
+  {
+    "code": "RG-CH-063",
+    "name": "Butyl Acetate AR 500g"
+  },
+  {
+    "code": "RG-CH-064",
+    "name": "Iodine AR 100g"
+  },
+  {
+    "code": "RG-CH-065",
+    "name": "Bromine AR 100g"
+  },
+  {
+    "code": "RG-CH-066",
+    "name": "Potassium Iodide AR 500g"
+  },
+  {
+    "code": "RG-CH-067",
+    "name": "Potassium Bromide AR 500g"
+  },
+  {
+    "code": "RG-CH-068",
+    "name": "Silver Nitrate AR 100g"
+  },
+  {
+    "code": "RG-CH-069",
+    "name": "Lead Nitrate AR 500g"
+  },
+  {
+    "code": "RG-CH-070",
+    "name": "Copper Nitrate AR 500g"
+  },
+  {
+    "code": "RG-CH-071",
+    "name": "Iron Nitrate AR 500g"
+  },
+  {
+    "code": "RG-CH-072",
+    "name": "Manganese Dioxide AR 500g"
+  },
+  {
+    "code": "RG-CH-073",
+    "name": "Potassium Permanganate AR 500g"
+  }
+];
+
+        // Category mapping
+        const categoryMap = {
+            'EQ': { name: 'Equipment', subcategories: {
+                'EL': 'Electrical',
+                'ME': 'Mechanical',
+                'OP': 'Optical',
+                'MO': 'Models'
+            }},
+            'GL': { name: 'Glassware', subcategories: {
+                'BK': 'Beakers',
+                'FL': 'Flasks',
+                'CY': 'Cylinders',
+                'TB': 'Tubes',
+                'FU': 'Funnels'
+            }},
+            'PL': { name: 'Plasticware', subcategories: {
+                'BK': 'Beakers',
+                'CY': 'Cylinders',
+                'TB': 'Tubes'
+            }},
+            'RG': { name: 'Reagents/Chemicals', subcategories: {
+                'CH': 'Chemicals',
+                'ST': 'Stains',
+                'AG': 'Agar/Media'
+            }},
+            'CS': { name: 'Consumables', subcategories: {
+                'PP': 'Paper',
+                'DP': 'Disposable'
+            }},
+            'TL': { name: 'Tools/Accessories', subcategories: {
+                'CL': 'Clamps/Clips',
+                'ST': 'Stirrers/Support'
+            }}
+        };
+
+        // Process products to add category and subcategory information
+        function processProducts() {
+            return products.map(product => {
+                const codeParts = product.code.split('-');
+                if (codeParts.length === 3) {
+                    const categoryCode = codeParts[0];
+                    const subcategoryCode = codeParts[1];
+                    
+                    if (categoryMap[categoryCode]) {
+                        product.category = {
+                            code: categoryCode,
+                            name: categoryMap[categoryCode].name
+                        };
+                        
+                        if (categoryMap[categoryCode].subcategories[subcategoryCode]) {
+                            product.subcategory = {
+                                code: subcategoryCode,
+                                name: categoryMap[categoryCode].subcategories[subcategoryCode]
+                            };
+                        } else {
+                            product.subcategory = {
+                                code: subcategoryCode,
+                                name: 'Unknown Subcategory'
+                            };
+                        }
+                    } else {
+                        product.category = {
+                            code: categoryCode,
+                            name: 'Unknown Category'
+                        };
+                        product.subcategory = {
+                            code: subcategoryCode,
+                            name: 'Unknown Subcategory'
+                        };
+                    }
+                }
+                
+                return product;
+            });
+        }
+
+        // Populate category sidebar
+        function populateCategorySidebar(products) {
+            const sidebar = document.getElementById('categorySidebar');
+            const categoryFilter = document.getElementById('categoryFilter');
+            
+            // Get unique categories
+            const categories = {};
+            products.forEach(product => {
+                if (product.category) {
+                    const categoryCode = product.category.code;
+                    if (!categories[categoryCode]) {
+                        categories[categoryCode] = {
+                            code: categoryCode,
+                            name: product.category.name,
+                            subcategories: {},
+                            count: 0
+                        };
+                    }
+                    categories[categoryCode].count++;
+                    
+                    if (product.subcategory) {
+                        const subcategoryCode = product.subcategory.code;
+                        if (!categories[categoryCode].subcategories[subcategoryCode]) {
+                            categories[categoryCode].subcategories[subcategoryCode] = {
+                                code: subcategoryCode,
+                                name: product.subcategory.name,
+                                count: 0
+                            };
+                        }
+                        categories[categoryCode].subcategories[subcategoryCode].count++;
+                    }
+                }
+            });
+            
+            // Sort categories by code
+            const sortedCategories = Object.values(categories).sort((a, b) => a.code.localeCompare(b.code));
+            
+            // Populate sidebar
+            sortedCategories.forEach(category => {
+                // Add to category filter
+                const option = document.createElement('option');
+                option.value = category.code;
+                option.textContent = `${category.name} (${category.count})`;
+                categoryFilter.appendChild(option);
+                
+                // Create category item in sidebar
+                const categoryItem = document.createElement('div');
+                categoryItem.className = 'border-b pb-2 last:border-b-0';
+                categoryItem.innerHTML = `
+                    <div class="category-item flex items-center justify-between cursor-pointer py-2 hover:text-orange-600" data-category="${category.code}">
+                        <div class="flex items-center">
+                            <span class="text-gray-500 text-sm font-mono mr-2">${category.code}</span>
+                            <span class="font-medium">${category.name}</span>
+                            <span class="text-xs text-gray-500 ml-2">(${category.count})</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="chevron h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                    <div class="subcategory-list pl-6 mt-1 space-y-1">
+                        ${Object.values(category.subcategories)
+                            .sort((a, b) => a.code.localeCompare(b.code))
+                            .map(subcategory => `
+                                <a href="#" class="subcategory-item flex items-center py-1 text-gray-600 hover:text-orange-600" 
+                                   data-category="${category.code}" data-subcategory="${subcategory.code}">
+                                    <span class="text-gray-500 text-xs font-mono mr-2">${subcategory.code}</span>
+                                    <span>${subcategory.name}</span>
+                                    <span class="text-xs text-gray-500 ml-2">(${subcategory.count})</span>
+                                </a>
+                            `).join('')}
+                    </div>
+                `;
+                
+                sidebar.appendChild(categoryItem);
+            });
+            
+            // Add event listeners to category items
+            document.querySelectorAll('.category-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const subcategoryList = this.nextElementSibling;
+                    const chevron = this.querySelector('.chevron');
+                    
+                    // Toggle subcategory list
+                    subcategoryList.classList.toggle('active');
+                    
+                    // Rotate chevron
+                    if (subcategoryList.classList.contains('active')) {
+                        chevron.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />`;
+                    } else {
+                        chevron.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />`;
+                    }
+                    
+                    // Filter products by category
+                    const categoryCode = this.dataset.category;
+                    filterProducts(processedProducts, categoryCode, 'all');
+                    
+                    // Update breadcrumb
+                    document.getElementById('currentCategory').textContent = categoryMap[categoryCode].name;
+                    
+                    // Update category filter
+                    document.getElementById('categoryFilter').value = categoryCode;
+                    updateSubcategoryFilter(categoryCode);
+                });
+            });
+            
+            // Add event listeners to subcategory items
+            document.querySelectorAll('.subcategory-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const categoryCode = this.dataset.category;
+                    const subcategoryCode = this.dataset.subcategory;
+                    
+                    // Filter products
+                    filterProducts(processedProducts, categoryCode, subcategoryCode);
+                    
+                    // Update breadcrumb
+                    document.getElementById('currentCategory').textContent = 
+                        `${categoryMap[categoryCode].name} / ${categoryMap[categoryCode].subcategories[subcategoryCode]}`;
+                    
+                    // Update filters
+                    document.getElementById('categoryFilter').value = categoryCode;
+                    updateSubcategoryFilter(categoryCode);
+                    document.getElementById('subcategoryFilter').value = subcategoryCode;
+                });
+            });
+        }
+
+        // Update subcategory filter based on selected category
+        function updateSubcategoryFilter(categoryCode) {
+            const subcategoryFilter = document.getElementById('subcategoryFilter');
+            subcategoryFilter.innerHTML = '<option value="all">All Subcategories</option>';
+            
+            if (categoryCode !== 'all' && categoryMap[categoryCode]) {
+                const subcategories = categoryMap[categoryCode].subcategories;
+                Object.entries(subcategories).forEach(([code, name]) => {
+                    const option = document.createElement('option');
+                    option.value = code;
+                    option.textContent = `${name} (${code})`;
+                    subcategoryFilter.appendChild(option);
+                });
+            }
+        }
+
+        // Display products in grid
+        function displayProducts(products) {
+            const grid = document.getElementById('productGrid');
+            const productCount = document.getElementById('productCount');
+            
+            grid.innerHTML = '';
+            
+            if (products.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center py-8 text-gray-500">No products found matching your criteria.</div>';
+                productCount.textContent = 'No products found';
+                return;
+            }
+            
+            productCount.textContent = `Showing ${products.length} product${products.length !== 1 ? 's' : ''}`;
+            
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card bg-white rounded-lg border overflow-hidden cursor-pointer';
+                card.innerHTML = `
+                    <div class="p-4 bg-gray-50 flex items-center justify-center h-48">
+                        <img src="${product.code}.jpg" alt="${product.name}" class="max-h-full max-w-full object-contain"
+                             onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200/f3f4f6/9ca3af?text=No+Image';">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="inline-block bg-gray-100 text-gray-800 text-xs font-mono px-2 py-1 rounded">${product.code}</span>
+                            <span class="text-xs text-gray-500">${product.category ? product.category.name : 'Unknown'}</span>
+                        </div>
+                        <h3 class="font-medium text-gray-900 mb-1 line-clamp-2" title="${product.name}">${product.name}</h3>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="text-xs text-gray-500">${product.subcategory ? product.subcategory.name : 'Unknown'}</span>
+                            <span class="text-sm font-medium text-orange-600 hover:underline">View Details</span>
+                        </div>
+                    </div>
+                `;
+                
+                // Add click event to entire card
+                card.addEventListener('click', function() {
+                    showProductModal(product);
+                });
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter products by category and subcategory
+        function filterProducts(allProducts, categoryCode, subcategoryCode) {
+            let filtered = allProducts;
+            
+            if (categoryCode !== 'all') {
+                filtered = filtered.filter(product => 
+                    product.category && product.category.code === categoryCode);
+                
+                if (subcategoryCode !== 'all') {
+                    filtered = filtered.filter(product => 
+                        product.subcategory && product.subcategory.code === subcategoryCode);
+                }
+            }
+            
+            // Apply sort
+            const sortFilter = document.getElementById('sortFilter').value;
+            sortProducts(filtered, sortFilter);
+            
+            displayProducts(filtered);
+        }
+
+        // Sort products
+        function sortProducts(products, sortBy) {
+            switch (sortBy) {
+                case 'name-asc':
+                    products.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'name-desc':
+                    products.sort((a, b) => b.name.localeCompare(a.name));
+                    break;
+                case 'code-asc':
+                    products.sort((a, b) => a.code.localeCompare(b.code));
+                    break;
+                case 'code-desc':
+                    products.sort((a, b) => b.code.localeCompare(a.code));
+                    break;
+            }
+        }
+
+        // Show product modal
+        function showProductModal(product) {
+            const modal = document.getElementById('productModal');
+            
+            // Set modal content
+            document.getElementById('modalProductCode').textContent = product.code;
+            document.getElementById('modalProductName').textContent = product.name;
+            document.getElementById('modalProductImage').src = `${product.code}.jpg`;
+            document.getElementById('modalProductImage').alt = product.name;
+            document.getElementById('modalProductImage').onerror = function() {
+                this.onerror = null;
+                this.src = 'https://via.placeholder.com/400x400/f3f4f6/9ca3af?text=No+Image';
+            };
+            document.getElementById('modalProductCategory').textContent = product.category ? 
+                `${product.category.name} (${product.category.code})` : 'Unknown';
+            document.getElementById('modalProductSubcategory').textContent = product.subcategory ? 
+                `${product.subcategory.name} (${product.subcategory.code})` : 'Unknown';
+            
+            // Set a generic description since we don't have actual descriptions
+            document.getElementById('modalProductDescription').textContent = 
+                `${product.name} (${product.code}) is a high-quality laboratory product from Theotoka Laboratory Solutions. ` +
+                `This item belongs to the ${product.category ? product.category.name : 'Unknown'} category and ` +
+                `${product.subcategory ? product.subcategory.name : 'Unknown'} subcategory. For detailed specifications, ` +
+                `pricing, and availability, please contact our sales team.`;
+            
+            // Show modal
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close product modal
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Search products
+        function searchProducts(products, query) {
+            if (!query) {
+                return products;
+            }
+            
+            query = query.toLowerCase();
+            return products.filter(product => 
+                product.name.toLowerCase().includes(query) || 
+                product.code.toLowerCase().includes(query)
+            );
+        }
+
+        // Clear all filters
+        function clearFilters() {
+            document.getElementById('categoryFilter').value = 'all';
+            document.getElementById('subcategoryFilter').innerHTML = '<option value="all">All Subcategories</option>';
+            document.getElementById('sortFilter').value = 'name-asc';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('currentCategory').textContent = 'All Products';
+            
+            // Reset sidebar
+            document.querySelectorAll('.subcategory-list').forEach(list => {
+                list.classList.remove('active');
+            });
+            document.querySelectorAll('.chevron').forEach(chevron => {
+                chevron.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />`;
+            });
+            
+            displayProducts(processedProducts);
+        }
+
+        // Global variable to store processed products
+        let processedProducts = [];
+
+        // Initialize
+        function initialize() {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Process products to add category and subcategory information
+            processedProducts = processProducts();
+            
+            // Populate sidebar and initial product display
+            populateCategorySidebar(processedProducts);
+            displayProducts(processedProducts);
+            
+            // Add event listeners to filters
+            document.getElementById('categoryFilter').addEventListener('change', function() {
+                const categoryCode = this.value;
+                updateSubcategoryFilter(categoryCode);
+                filterProducts(processedProducts, categoryCode, 'all');
+                
+                // Update breadcrumb
+                document.getElementById('currentCategory').textContent = 
+                    categoryCode === 'all' ? 'All Products' : categoryMap[categoryCode].name;
+            });
+            
+            document.getElementById('subcategoryFilter').addEventListener('change', function() {
+                const categoryCode = document.getElementById('categoryFilter').value;
+                const subcategoryCode = this.value;
+                filterProducts(processedProducts, categoryCode, subcategoryCode);
+                
+                // Update breadcrumb
+                document.getElementById('currentCategory').textContent = 
+                    categoryCode === 'all' ? 'All Products' : 
+                    subcategoryCode === 'all' ? categoryMap[categoryCode].name : 
+                    `${categoryMap[categoryCode].name} / ${categoryMap[categoryCode].subcategories[subcategoryCode]}`;
+            });
+            
+            document.getElementById('sortFilter').addEventListener('change', function() {
+                const categoryCode = document.getElementById('categoryFilter').value;
+                const subcategoryCode = document.getElementById('subcategoryFilter').value;
+                filterProducts(processedProducts, categoryCode, subcategoryCode);
+            });
+            
+            // Add event listener to clear filters button
+            document.getElementById('clearFilters').addEventListener('click', clearFilters);
+            
+            // Add event listener to search input
+            document.getElementById('searchInput').addEventListener('input', function() {
+                const query = this.value.trim();
+                let filtered = processedProducts;
+                
+                if (query) {
+                    filtered = searchProducts(processedProducts, query);
+                    document.getElementById('currentCategory').textContent = `Search: "${query}"`;
+                } else {
+                    document.getElementById('currentCategory').textContent = 'All Products';
+                }
+                
+                displayProducts(filtered);
+            });
+            
+            // Add event listeners to modal close buttons
+            document.getElementById('closeModal').addEventListener('click', closeModal);
+            document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside
+            document.getElementById('productModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        }
+
+        // Run initialization when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initialize);
+    </script>
+</body>
+</html>
