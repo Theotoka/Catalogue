@@ -6,13 +6,6 @@
     <title>Theotoka Laboratory Solutions - Product Catalogue</title>
     <link rel="icon" type="image/png" href="icon.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "rrlj13gjph");
-     </script>
     <style>
         .product-card {
             transition: transform 0.2s, box-shadow 0.2s;
@@ -150,6 +143,151 @@
         }
         .ad-prev { left: 10px; }
         .ad-next { right: 10px; }
+        
+        /* Shopping Cart Styles */
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-sidebar.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-quantity {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background: #f9f9f9;
+        }
+        
+        .cart-total {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .client-info {
+            margin-bottom: 15px;
+        }
+        
+        .client-info input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .cart-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .cart-actions button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .clear-cart {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        
+        .send-quote {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .add-to-cart {
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--secondary-color);
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
@@ -400,6 +538,46 @@
                     <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md" id="closeModalBtn">Close</button>
                     <button onclick="window.open('https://wa.me/260977440435', '_blank')" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-md">Request Quote</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Icon -->
+    <div class="cart-icon" id="cartIcon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+    </div>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2 class="text-xl font-bold">Shopping Cart</h2>
+            <button id="closeCart" class="text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        
+        <div class="cart-content" id="cartContent">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                Total: <span id="cartTotal">K0.00</span>
+            </div>
+            
+            <div class="client-info">
+                <input type="text" id="clientName" placeholder="Your Name" required>
+                <input type="text" id="institutionName" placeholder="Institution Name" required>
+            </div>
+            
+            <div class="cart-actions">
+                <button class="clear-cart" id="clearCart">Clear Cart</button>
+                <button class="send-quote" id="sendQuote">Send Quote Request</button>
             </div>
         </div>
     </div>
@@ -1981,10 +2159,11 @@
             productCount.textContent = `Showing ${products.length} product${products.length !== 1 ? 's' : ''}`;
             
             products.forEach(product => {
+                const price = productPrices[product.code] || 0;
                 const card = document.createElement('div');
-                card.className = 'product-card bg-white rounded-lg border overflow-hidden cursor-pointer';
+                card.className = 'product-card bg-white rounded-lg border overflow-hidden';
                 card.innerHTML = `
-                    <div class="p-4 bg-gray-50 flex items-center justify-center h-48">
+                    <div class="p-4 bg-gray-50 flex items-center justify-center h-48 cursor-pointer product-image">
                         <img src="${product.code}.jpg" alt="${product.name}" class="max-h-full max-w-full object-contain"
                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200/f3f4f6/9ca3af?text=No+Image';">
                     </div>
@@ -1995,15 +2174,24 @@
                         </div>
                         <h3 class="font-medium text-gray-900 mb-1 line-clamp-2" title="${product.name}">${product.name}</h3>
                         <div class="flex justify-between items-center mt-3">
-                            <span class="text-xs text-gray-500">${product.subcategory ? product.subcategory.name : 'Unknown'}</span>
-                            <span class="text-sm font-medium text-orange-600 hover:underline">View Details</span>
+                            <span class="text-sm font-medium text-orange-600">K${price.toFixed(2)}</span>
+                            <button class="add-to-cart" data-product='${JSON.stringify(product)}'>
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 `;
                 
-                // Add click event to entire card
-                card.addEventListener('click', function() {
+                // Add click event to product image for modal
+                card.querySelector('.product-image').addEventListener('click', function() {
                     showProductModal(product);
+                });
+                
+                // Add click event to Add to Cart button
+                card.querySelector('.add-to-cart').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const productData = JSON.parse(this.dataset.product);
+                    addToCart(productData);
                 });
                 
                 grid.appendChild(card);
@@ -2271,6 +2459,162 @@
                     if (slideInterval) clearInterval(slideInterval);
                 }
             });
+        });
+
+        // Add price data to products
+        const productPrices = {
+            // Example prices - you'll need to update these with actual prices
+            "RG-CH-074": 25.99,
+            "RG-CH-075": 29.99,
+            "RG-CH-076": 19.99,
+            // Add more prices for all products
+        };
+
+        // Shopping Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        function updateCartBadge() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartBadge').textContent = totalItems;
+        }
+        
+        function addToCart(product) {
+            const existingItem = cart.find(item => item.productId === product.code);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    productId: product.code,
+                    productName: product.name,
+                    price: productPrices[product.code] || 0,
+                    quantity: 1,
+                    imageUrl: `${product.code}.jpg`
+                });
+            }
+            
+            saveCart();
+            updateCartBadge();
+            updateCartDisplay();
+            
+            // Show cart sidebar when adding items
+            document.getElementById('cartSidebar').classList.add('active');
+        }
+        
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.productId !== productId);
+            saveCart();
+            updateCartBadge();
+            updateCartDisplay();
+        }
+        
+        function updateQuantity(productId, quantity) {
+            const item = cart.find(item => item.productId === productId);
+            if (item) {
+                const newQuantity = Math.max(1, parseInt(quantity));
+                item.quantity = newQuantity;
+                saveCart();
+                updateCartDisplay();
+            }
+        }
+        
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        
+        function updateCartDisplay() {
+            const cartContent = document.getElementById('cartContent');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartContent.innerHTML = '<div class="text-center py-8 text-gray-500">Your cart is empty</div>';
+                cartTotal.textContent = 'K0.00';
+                return;
+            }
+            
+            let total = 0;
+            cartContent.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                return `
+                    <div class="cart-item">
+                        <img src="${item.imageUrl}" alt="${item.productName}" class="cart-item-image"
+                             onerror="this.src='https://via.placeholder.com/80x80/f3f4f6/9ca3af?text=No+Image'">
+                        <div class="cart-item-details">
+                            <h3 class="font-medium">${item.productName}</h3>
+                            <p class="text-sm text-gray-500">${item.productId}</p>
+                            <p class="text-sm">K${item.price.toFixed(2)} each</p>
+                            <div class="flex items-center gap-2 mt-2">
+                                <input type="number" class="cart-item-quantity" 
+                                       value="${item.quantity}" min="1"
+                                       onchange="updateQuantity('${item.productId}', this.value)">
+                                <button onclick="removeFromCart('${item.productId}')" 
+                                        class="text-red-500 hover:text-red-700">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            cartTotal.textContent = `K${total.toFixed(2)}`;
+        }
+        
+        function sendQuoteRequest() {
+            const clientName = document.getElementById('clientName').value;
+            const institutionName = document.getElementById('institutionName').value;
+            
+            if (!clientName || !institutionName) {
+                alert('Please enter your name and institution name');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                alert('Your cart is empty');
+                return;
+            }
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            let message = `Quotation Request from ${clientName} (${institutionName})\n\n`;
+            message += cart.map(item => 
+                `• ${item.productName} (Code: ${item.productId}), Qty: ${item.quantity}`
+            ).join('\n');
+            message += `\n\nTotal Quantity: ${totalItems}`;
+            message += `\nEstimated Total: K${totalPrice.toFixed(2)}`;
+            message += '\n\nPlease provide a formal quotation for these items.';
+            
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/260977440435?text=${encodedMessage}`, '_blank');
+        }
+
+        // Add cart toggle functionality
+        document.getElementById('cartIcon').addEventListener('click', function() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+        });
+        
+        document.getElementById('closeCart').addEventListener('click', function() {
+            document.getElementById('cartSidebar').classList.remove('active');
+        });
+        
+        document.getElementById('clearCart').addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear your cart?')) {
+                cart = [];
+                saveCart();
+                updateCartBadge();
+                updateCartDisplay();
+            }
+        });
+        
+        document.getElementById('sendQuote').addEventListener('click', sendQuoteRequest);
+
+        // Initialize cart on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartBadge();
+            updateCartDisplay();
         });
     </script>
 </body>
