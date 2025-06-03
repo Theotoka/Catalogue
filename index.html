@@ -254,7 +254,8 @@
             position: sticky;
             bottom: 0;
             z-index: 2;
-            flex-shrink: 0; /* Prevent footer from shrinking */
+            flex-shrink: 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1); /* Add shadow to make it stand out */
         }
         
         .cart-total {
@@ -297,44 +298,58 @@
             }
             
             .cart-content {
-                padding-bottom: 100px; /* Extra padding on mobile to ensure last item is visible above footer */
+                padding-bottom: 180px; /* Increased padding to account for footer height */
+            }
+            
+            .cart-footer {
+                padding: 15px;
+            }
+            
+            .cart-total {
+                font-size: 1.1em;
+                margin-bottom: 10px;
+            }
+            
+            .client-info {
+                margin-bottom: 10px;
+            }
+            
+            .client-info input {
+                padding: 10px;
+                margin-bottom: 8px;
+            }
+            
+            .cart-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .cart-actions button {
+                width: 100%;
+                padding: 12px;
+                font-size: 0.95em; /* Slightly smaller font to fit better */
             }
             
             .cart-item {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                padding: 15px 0; /* Increased padding for better touch targets */
+                padding: 15px 0;
             }
             
             .cart-item-image {
                 width: 120px;
                 height: 120px;
-                margin-bottom: 10px; /* Add space between image and details */
+                margin-bottom: 10px;
             }
             
             .cart-item-details {
                 width: 100%;
             }
             
-            .cart-actions {
-                flex-direction: column;
-                gap: 10px; /* Increased gap between buttons */
-            }
-            
-            .cart-actions button {
-                width: 100%;
-                padding: 12px; /* Larger touch targets */
-            }
-            
             .cart-icon {
                 top: 10px;
                 right: 10px;
-            }
-
-            .client-info input {
-                padding: 12px; /* Larger input fields for mobile */
-                margin-bottom: 15px;
             }
         }
         
