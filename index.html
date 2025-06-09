@@ -672,1342 +672,447 @@
     <script>
         // All products data embedded directly in the HTML
         const products = [
-  {
-    "code": "RG-CH-074",
-    "name": "Zinc Acetate AR 500g"
-  },
-  {
-    "code": "RG-CH-075",
-    "name": "Zinc Chloride AR 500g"
-  },
-  {
-    "code": "RG-CH-076",
-    "name": "Zinc Oxide AR 500g"
-  },
-  {
-    "code": "RG-CH-077",
-    "name": "Zinc Sulphate AR 500g"
-  },
-  {
-    "code": "RG-CH-078",
-    "name": "Zinc Sulphate Heptahydrate AR 500g"
-  },
-  {
-    "code": "RG-CH-079",
-    "name": "Zirconium Dioxide AR 100g"
-  },
-  {
-    "code": "RG-CH-080",
-    "name": "Zirconium Oxychloride AR 100g"
-  },
-  {
-    "code": "RG-CH-081",
-    "name": "Acetone AR 500ml"
-  },
-  {
-    "code": "RG-CH-082",
-    "name": "Acetic Acid Glacial AR 500ml"
-  },
-  {
-    "code": "RG-CH-083",
-    "name": "Ammonia Solution AR 500ml"
-  },
-  {
-    "code": "RG-CH-084",
-    "name": "Benzene AR 500ml"
-  },
-  {
-    "code": "RG-CH-085",
-    "name": "Carbon Tetrachloride AR 500ml"
-  },
-  {
-    "code": "RG-CH-086",
-    "name": "Chloroform AR 500ml"
-  },
-  {
-    "code": "RG-CH-087",
-    "name": "Diethyl Ether AR 500ml"
-  },
-  {
-    "code": "RG-CH-088",
-    "name": "Ethanol AR 500ml"
-  },
-  {
-    "code": "RG-CH-089",
-    "name": "Ethyl Acetate AR 500ml"
-  },
-  {
-    "code": "RG-CH-090",
-    "name": "Formaldehyde Solution AR 500ml"
-  },
-  {
-    "code": "RG-CH-091",
-    "name": "Formic Acid AR 500ml"
-  },
-  {
-    "code": "RG-CH-092",
-    "name": "Glycerol AR 500ml"
-  },
-  {
-    "code": "RG-CH-093",
-    "name": "Hexane AR 500ml"
-  },
-  {
-    "code": "RG-CH-094",
-    "name": "Hydrochloric Acid AR 500ml"
-  },
-  {
-    "code": "RG-CH-095",
-    "name": "Hydrogen Peroxide AR 500ml"
-  },
-  {
-    "code": "RG-CH-096",
-    "name": "Isopropanol AR 500ml"
-  },
-  {
-    "code": "RG-CH-097",
-    "name": "Methanol AR 500ml"
-  },
-  {
-    "code": "RG-CH-098",
-    "name": "Nitric Acid AR 500ml"
-  },
-  {
-    "code": "RG-CH-099",
-    "name": "Petroleum Ether AR 500ml"
-  },
-  {
-    "code": "RG-CH-100",
-    "name": "Phosphoric Acid AR 500ml"
-  },
-  {
-    "code": "RG-CH-101",
-    "name": "Sulphuric Acid AR 500ml"
-  },
-  {
-    "code": "RG-CH-102",
-    "name": "Toluene AR 500ml"
-  },
-  {
-    "code": "RG-CH-103",
-    "name": "Xylene AR 500ml"
-  },
-  {
-    "code": "RG-ST-001",
-    "name": "Crystal Violet 25g"
-  },
-  {
-    "code": "RG-ST-002",
-    "name": "Methylene Blue 25g"
-  },
-  {
-    "code": "RG-ST-003",
-    "name": "Congo Red 25g"
-  },
-  {
-    "code": "RG-ST-004",
-    "name": "Safranin 25g"
-  },
-  {
-    "code": "RG-ST-005",
-    "name": "Malachite Green 25g"
-  },
-  {
-    "code": "RG-ST-006",
-    "name": "Neutral Red 25g"
-  },
-  {
-    "code": "RG-ST-007",
-    "name": "Phenol Red 25g"
-  },
-  {
-    "code": "RG-ST-008",
-    "name": "Bromothymol Blue 25g"
-  },
-  {
-    "code": "RG-ST-009",
-    "name": "Phenolphthalein 25g"
-  },
-  {
-    "code": "RG-ST-010",
-    "name": "Universal Indicator 100ml"
-  },
-  {
-    "code": "RG-ST-011",
-    "name": "Iodine Solution 100ml"
-  },
-  {
-    "code": "RG-ST-012",
-    "name": "Lugol's Iodine 100ml"
-  },
-  {
-    "code": "RG-ST-013",
-    "name": "Eosin Y 25g"
-  },
-  {
-    "code": "RG-ST-014",
-    "name": "Hematoxylin 25g"
-  },
-  {
-    "code": "RG-ST-015",
-    "name": "Giemsa Powder 10g"
-  },
-  {
-    "code": "RG-AG-001",
-    "name": "Nutrient Agar 500g"
-  },
-  {
-    "code": "RG-AG-002",
-    "name": "MacConkey Agar 500g"
-  },
-  {
-    "code": "RG-AG-003",
-    "name": "Blood Agar Base 500g"
-  },
-  {
-    "code": "RG-AG-004",
-    "name": "Sabouraud Dextrose Agar 500g"
-  },
-  {
-    "code": "RG-AG-005",
-    "name": "Mueller Hinton Agar 500g"
-  },
-  {
-    "code": "RG-AG-006",
-    "name": "Chocolate Agar 500g"
-  },
-  {
-    "code": "RG-AG-007",
-    "name": "Mannitol Salt Agar 500g"
-  },
-  {
-    "code": "RG-AG-008",
-    "name": "EMB Agar 500g"
-  },
-  {
-    "code": "RG-AG-009",
-    "name": "TSA (Tryptic Soy Agar) 500g"
-  },
-  {
-    "code": "RG-AG-010",
-    "name": "LB Agar 500g"
-  },
-  {
-    "code": "RG-AG-011",
-    "name": "MacConkey Sorbitol Agar 500g"
-  },
-  {
-    "code": "RG-AG-012",
-    "name": "Cetrimide Agar 500g"
-  },
-  {
-    "code": "RG-AG-013",
-    "name": "XLD Agar 500g"
-  },
-  {
-    "code": "RG-AG-014",
-    "name": "SS Agar 500g"
-  },
-  {
-    "code": "RG-AG-015",
-    "name": "TCBS Agar 500g"
-  },
-  {
-    "code": "CS-PP-001",
-    "name": "Filter Paper Whatman No.1 100 sheets"
-  },
-  {
-    "code": "CS-PP-002",
-    "name": "Filter Paper Whatman No.4 100 sheets"
-  },
-  {
-    "code": "CS-PP-003",
-    "name": "Filter Paper Whatman No.42 100 sheets"
-  },
-  {
-    "code": "CS-PP-004",
-    "name": "Litmus Blue Paper 100 strips"
-  },
-  {
-    "code": "CS-PP-005",
-    "name": "Litmus Red Paper 100 strips"
-  },
-  {
-    "code": "CS-PP-006",
-    "name": "pH Paper Universal 100 strips"
-  },
-  {
-    "code": "CS-PP-007",
-    "name": "Chromatography Paper 100 sheets"
-  },
-  {
-    "code": "CS-PP-008",
-    "name": "Weighing Paper 500 sheets"
-  },
-  {
-    "code": "CS-PP-009",
-    "name": "Lens Cleaning Paper 100 sheets"
-  },
-  {
-    "code": "CS-PP-010",
-    "name": "Blotting Paper 100 sheets"
-  },
-  {
-    "code": "CS-DP-001",
-    "name": "Disposable Petri Dishes 90mm (Pack of 20)"
-  },
-  {
-    "code": "CS-DP-002",
-    "name": "Disposable Pipettes 1ml (Pack of 100)"
-  },
-  {
-    "code": "CS-DP-003",
-    "name": "Disposable Pipettes 5ml (Pack of 100)"
-  },
-  {
-    "code": "CS-DP-004",
-    "name": "Disposable Pipettes 10ml (Pack of 100)"
-  },
-  {
-    "code": "CS-DP-005",
-    "name": "Disposable Gloves Nitrile (Pack of 100)"
-  },
-  {
-    "code": "CS-DP-006",
-    "name": "Disposable Gloves Latex (Pack of 100)"
-  },
-  {
-    "code": "CS-DP-007",
-    "name": "Disposable Face Mask (Pack of 50)"
-  },
-  {
-    "code": "CS-DP-008",
-    "name": "Disposable Lab Coats (Pack of 10)"
-  },
-  {
-    "code": "CS-DP-009",
-    "name": "Disposable Shoe Covers (Pack of 100)"
-  },
-  {
-    "code": "CS-DP-010",
-    "name": "Disposable Hair Nets (Pack of 100)"
-  },
-  {
-    "code": "CS-DP-011",
-    "name": "Pipette Tips 10μl (Pack of 1000)"
-  },
-  {
-    "code": "CS-DP-012",
-    "name": "Pipette Tips 200μl (Pack of 1000)"
-  },
-  {
-    "code": "CS-DP-013",
-    "name": "Pipette Tips 1000μl (Pack of 1000)"
-  },
-  {
-    "code": "CS-DP-014",
-    "name": "Disposable Cuvettes (Pack of 100)"
-  },
-  {
-    "code": "CS-DP-015",
-    "name": "Disposable Inoculating Loops (Pack of 100)"
-  },
-  {
-    "code": "TL-CL-001",
-    "name": "Burette Clamp"
-  },
-  {
-    "code": "TL-CL-002",
-    "name": "Test Tube Clamp"
-  },
-  {
-    "code": "TL-CL-003",
-    "name": "Beaker Clamp"
-  },
-  {
-    "code": "TL-CL-004",
-    "name": "Flask Clamp"
-  },
-  {
-    "code": "TL-CL-005",
-    "name": "Condenser Clamp"
-  },
-  {
-    "code": "TL-CL-006",
-    "name": "Universal Clamp"
-  },
-  {
-    "code": "TL-CL-007",
-    "name": "Pinch Clamp"
-  },
-  {
-    "code": "TL-CL-008",
-    "name": "Screw Clamp"
-  },
-  {
-    "code": "TL-CL-009",
-    "name": "Joint Clips (Pack of 10)"
-  },
-  {
-    "code": "TL-CL-010",
-    "name": "Crocodile Clips (Pack of 10)"
-  },
-  {
-    "code": "TL-ST-001",
-    "name": "Glass Stirrer 200mm"
-  },
-  {
-    "code": "TL-ST-002",
-    "name": "Glass Stirrer 300mm"
-  },
-  {
-    "code": "TL-ST-003",
-    "name": "Magnetic Stirrer Bar 25mm"
-  },
-  {
-    "code": "TL-ST-004",
-    "name": "Magnetic Stirrer Bar 40mm"
-  },
-  {
-    "code": "TL-ST-005",
-    "name": "Retort Stand with Base"
-  },
-  {
-    "code": "TL-ST-006",
-    "name": "Retort Rod 600mm"
-  },
-  {
-    "code": "TL-ST-007",
-    "name": "Boss Head"
-  },
-  {
-    "code": "TL-ST-008",
-    "name": "Ring Support 75mm"
-  },
-  {
-    "code": "TL-ST-009",
-    "name": "Ring Support 100mm"
-  },
-  {
-    "code": "TL-ST-010",
-    "name": "Tripod Stand"
-  },
-  {
-    "code": "TL-ST-011",
-    "name": "Wire Gauze 150mm"
-  },
-  {
-    "code": "TL-ST-012",
-    "name": "Clay Triangle"
-  },
-  {
-    "code": "TL-ST-013",
-    "name": "Test Tube Rack Wooden (12 holes)"
-  },
-  {
-    "code": "TL-ST-014",
-    "name": "Test Tube Rack Plastic (24 holes)"
-  },
-  {
-    "code": "TL-ST-015",
-    "name": "Drying Rack"
-  },
-  {
-    "code": "EQ-EL-001",
-    "name": "Electronic Balance 0.01g"
-  },
-  {
-    "code": "EQ-EL-002",
-    "name": "Electronic Balance 0.001g"
-  },
-  {
-    "code": "EQ-EL-003",
-    "name": "pH Meter Digital"
-  },
-  {
-    "code": "EQ-EL-004",
-    "name": "Conductivity Meter"
-  },
-  {
-    "code": "EQ-EL-005",
-    "name": "Spectrophotometer UV-Vis"
-  },
-  {
-    "code": "EQ-EL-006",
-    "name": "Colorimeter"
-  },
-  {
-    "code": "EQ-EL-007",
-    "name": "Centrifuge Benchtop"
-  },
-  {
-    "code": "EQ-EL-008",
-    "name": "Magnetic Stirrer"
-  },
-  {
-    "code": "EQ-EL-009",
-    "name": "Magnetic Stirrer with Heating"
-  },
-  {
-    "code": "EQ-EL-010",
-    "name": "Heating Mantle 250ml"
-  },
-  {
-    "code": "EQ-EL-011",
-    "name": "Heating Mantle 500ml"
-  },
-  {
-    "code": "EQ-EL-012",
-    "name": "Heating Mantle 1000ml"
-  },
-  {
-    "code": "EQ-EL-013",
-    "name": "Hot Plate"
-  },
-  {
-    "code": "EQ-EL-014",
-    "name": "Water Bath"
-  },
-  {
-    "code": "EQ-EL-015",
-    "name": "Incubator"
-  },
-  {
-    "code": "EQ-EL-016",
-    "name": "Oven Laboratory"
-  },
-  {
-    "code": "EQ-EL-017",
-    "name": "Autoclave"
-  },
-  {
-    "code": "EQ-EL-018",
-    "name": "Laminar Flow Hood"
-  },
-  {
-    "code": "EQ-EL-019",
-    "name": "Fume Hood"
-  },
-  {
-    "code": "EQ-EL-020",
-    "name": "Vacuum Pump"
-  },
-  {
-    "code": "EQ-EL-021",
-    "name": "Rotary Evaporator"
-  },
-  {
-    "code": "EQ-EL-022",
-    "name": "Ultrasonic Bath"
-  },
-  {
-    "code": "EQ-EL-023",
-    "name": "Vortex Mixer"
-  },
-  {
-    "code": "EQ-EL-024",
-    "name": "Micropipette 10μl"
-  },
-  {
-    "code": "EQ-EL-025",
-    "name": "Micropipette 100μl"
-  },
-  {
-    "code": "EQ-EL-026",
-    "name": "Micropipette 1000μl"
-  },
-  {
-    "code": "EQ-EL-027",
-    "name": "Electrophoresis Unit"
-  },
-  {
-    "code": "EQ-EL-028",
-    "name": "Power Supply"
-  },
-  {
-    "code": "EQ-EL-029",
-    "name": "Gel Documentation System"
-  },
-  {
-    "code": "EQ-EL-030",
-    "name": "PCR Machine"
-  },
-  {
-    "code": "EQ-ME-001",
-    "name": "Mechanical Balance Triple Beam"
-  },
-  {
-    "code": "EQ-ME-002",
-    "name": "Spring Balance 1N"
-  },
-  {
-    "code": "EQ-ME-003",
-    "name": "Spring Balance 5N"
-  },
-  {
-    "code": "EQ-ME-004",
-    "name": "Spring Balance 10N"
-  },
-  {
-    "code": "EQ-ME-005",
-    "name": "Pulley Single Fixed"
-  },
-  {
-    "code": "EQ-ME-006",
-    "name": "Pulley Single Movable"
-  },
-  {
-    "code": "EQ-ME-007",
-    "name": "Pulley System Set"
-  },
-  {
-    "code": "EQ-ME-008",
-    "name": "Lever Demonstration Set"
-  },
-  {
-    "code": "EQ-ME-009",
-    "name": "Inclined Plane"
-  },
-  {
-    "code": "EQ-ME-010",
-    "name": "Pendulum Bobs Set"
-  },
-  {
-    "code": "EQ-ME-011",
-    "name": "Simple Pendulum"
-  },
-  {
-    "code": "EQ-ME-012",
-    "name": "Compound Pendulum"
-  },
-  {
-    "code": "EQ-ME-013",
-    "name": "Oscillation Apparatus"
-  },
-  {
-    "code": "EQ-ME-014",
-    "name": "Force Table"
-  },
-  {
-    "code": "EQ-ME-015",
-    "name": "Atwood Machine"
-  },
-  {
-    "code": "EQ-OP-001",
-    "name": "Microscope Compound"
-  },
-  {
-    "code": "EQ-OP-002",
-    "name": "Microscope Stereo"
-  },
-  {
-    "code": "EQ-OP-003",
-    "name": "Magnifying Glass 3x"
-  },
-  {
-    "code": "EQ-OP-004",
-    "name": "Magnifying Glass 5x"
-  },
-  {
-    "code": "EQ-OP-005",
-    "name": "Magnifying Glass 10x"
-  },
-  {
-    "code": "EQ-OP-006",
-    "name": "Hand Lens 10x"
-  },
-  {
-    "code": "EQ-OP-007",
-    "name": "Convex Lens 50mm"
-  },
-  {
-    "code": "EQ-OP-008",
-    "name": "Convex Lens 75mm"
-  },
-  {
-    "code": "EQ-OP-009",
-    "name": "Convex Lens 100mm"
-  },
-  {
-    "code": "EQ-OP-010",
-    "name": "Concave Lens 50mm"
-  },
-  {
-    "code": "EQ-OP-011",
-    "name": "Concave Lens 75mm"
-  },
-  {
-    "code": "EQ-OP-012",
-    "name": "Concave Lens 100mm"
-  },
-  {
-    "code": "EQ-OP-013",
-    "name": "Prism Equilateral"
-  },
-  {
-    "code": "EQ-OP-014",
-    "name": "Prism Right Angle"
-  },
-  {
-    "code": "EQ-OP-015",
-    "name": "Mirror Plane 75mm"
-  },
-  {
-    "code": "EQ-OP-016",
-    "name": "Mirror Concave 75mm"
-  },
-  {
-    "code": "EQ-OP-017",
-    "name": "Mirror Convex 75mm"
-  },
-  {
-    "code": "EQ-OP-018",
-    "name": "Optical Bench 1m"
-  },
-  {
-    "code": "EQ-OP-019",
-    "name": "Ray Box"
-  },
-  {
-    "code": "EQ-OP-020",
-    "name": "Laser Pointer"
-  },
-  {
-    "code": "EQ-MO-001",
-    "name": "Human Skeleton Model"
-  },
-  {
-    "code": "EQ-MO-002",
-    "name": "Human Skull Model"
-  },
-  {
-    "code": "EQ-MO-003",
-    "name": "Human Heart Model"
-  },
-  {
-    "code": "EQ-MO-004",
-    "name": "Human Brain Model"
-  },
-  {
-    "code": "EQ-MO-005",
-    "name": "Human Eye Model"
-  },
-  {
-    "code": "EQ-MO-006",
-    "name": "Human Ear Model"
-  },
-  {
-    "code": "EQ-MO-007",
-    "name": "Human Torso Model"
-  },
-  {
-    "code": "EQ-MO-008",
-    "name": "DNA Model"
-  },
-  {
-    "code": "EQ-MO-009",
-    "name": "Cell Model Plant"
-  },
-  {
-    "code": "EQ-MO-010",
-    "name": "Cell Model Animal"
-  },
-  {
-    "code": "EQ-MO-011",
-    "name": "Flower Model"
-  },
-  {
-    "code": "EQ-MO-012",
-    "name": "Leaf Model"
-  },
-  {
-    "code": "EQ-MO-013",
-    "name": "Root Model"
-  },
-  {
-    "code": "EQ-MO-014",
-    "name": "Molecular Model Set"
-  },
-  {
-    "code": "EQ-MO-015",
-    "name": "Crystal Structure Models"
-  },
-  {
-    "code": "GL-BK-001",
-    "name": "Glass Beaker 50ml"
-  },
-  {
-    "code": "GL-BK-002",
-    "name": "Glass Beaker 100ml"
-  },
-  {
-    "code": "GL-BK-003",
-    "name": "Glass Beaker 250ml"
-  },
-  {
-    "code": "GL-BK-004",
-    "name": "Glass Beaker 500ml"
-  },
-  {
-    "code": "GL-BK-005",
-    "name": "Glass Beaker 1000ml"
-  },
-  {
-    "code": "GL-BK-006",
-    "name": "Glass Beaker 2000ml"
-  },
-  {
-    "code": "GL-FL-001",
-    "name": "Conical Flask 100ml"
-  },
-  {
-    "code": "GL-FL-002",
-    "name": "Conical Flask 250ml"
-  },
-  {
-    "code": "GL-FL-003",
-    "name": "Conical Flask 500ml"
-  },
-  {
-    "code": "GL-FL-004",
-    "name": "Conical Flask 1000ml"
-  },
-  {
-    "code": "GL-FL-005",
-    "name": "Round Bottom Flask 100ml"
-  },
-  {
-    "code": "GL-FL-006",
-    "name": "Round Bottom Flask 250ml"
-  },
-  {
-    "code": "GL-FL-007",
-    "name": "Round Bottom Flask 500ml"
-  },
-  {
-    "code": "GL-FL-008",
-    "name": "Round Bottom Flask 1000ml"
-  },
-  {
-    "code": "GL-FL-009",
-    "name": "Flat Bottom Flask 100ml"
-  },
-  {
-    "code": "GL-FL-010",
-    "name": "Flat Bottom Flask 250ml"
-  },
-  {
-    "code": "GL-FL-011",
-    "name": "Flat Bottom Flask 500ml"
-  },
-  {
-    "code": "GL-FL-012",
-    "name": "Flat Bottom Flask 1000ml"
-  },
-  {
-    "code": "GL-FL-013",
-    "name": "Volumetric Flask 100ml"
-  },
-  {
-    "code": "GL-FL-014",
-    "name": "Volumetric Flask 250ml"
-  },
-  {
-    "code": "GL-FL-015",
-    "name": "Volumetric Flask 500ml"
-  },
-  {
-    "code": "GL-FL-016",
-    "name": "Volumetric Flask 1000ml"
-  },
-  {
-    "code": "GL-CY-001",
-    "name": "Glass Measuring Cylinder 10ml"
-  },
-  {
-    "code": "GL-CY-002",
-    "name": "Glass Measuring Cylinder 25ml"
-  },
-  {
-    "code": "GL-CY-003",
-    "name": "Glass Measuring Cylinder 50ml"
-  },
-  {
-    "code": "GL-CY-004",
-    "name": "Glass Measuring Cylinder 100ml"
-  },
-  {
-    "code": "GL-CY-005",
-    "name": "Glass Measuring Cylinder 250ml"
-  },
-  {
-    "code": "GL-CY-006",
-    "name": "Glass Measuring Cylinder 500ml"
-  },
-  {
-    "code": "GL-CY-007",
-    "name": "Glass Measuring Cylinder 1000ml"
-  },
-  {
-    "code": "GL-TB-001",
-    "name": "Test Tubes 15x150mm (Pack of 10)"
-  },
-  {
-    "code": "GL-TB-002",
-    "name": "Test Tubes 18x150mm (Pack of 10)"
-  },
-  {
-    "code": "GL-TB-003",
-    "name": "Test Tubes 20x150mm (Pack of 10)"
-  },
-  {
-    "code": "GL-TB-004",
-    "name": "Test Tubes 25x150mm (Pack of 10)"
-  },
-  {
-    "code": "GL-TB-005",
-    "name": "Test Tubes with Rim 15x150mm (Pack of 10)"
-  },
-  {
-    "code": "GL-TB-006",
-    "name": "Test Tubes with Rim 18x150mm (Pack of 10)"
-  },
-  {
-    "code": "GL-TB-007",
-    "name": "Boiling Tubes 25x200mm (Pack of 10)"
-  },
-  {
-    "code": "GL-TB-008",
-    "name": "Culture Tubes 16x150mm (Pack of 10)"
-  },
-  {
-    "code": "GL-TB-009",
-    "name": "Centrifuge Tubes 15ml (Pack of 10)"
-  },
-  {
-    "code": "GL-TB-010",
-    "name": "Centrifuge Tubes 50ml (Pack of 10)"
-  },
-  {
-    "code": "GL-FU-001",
-    "name": "Glass Funnel 50mm"
-  },
-  {
-    "code": "GL-FU-002",
-    "name": "Glass Funnel 75mm"
-  },
-  {
-    "code": "GL-FU-003",
-    "name": "Glass Funnel 100mm"
-  },
-  {
-    "code": "GL-FU-004",
-    "name": "Glass Funnel 125mm"
-  },
-  {
-    "code": "GL-FU-005",
-    "name": "Separating Funnel 100ml"
-  },
-  {
-    "code": "GL-FU-006",
-    "name": "Separating Funnel 250ml"
-  },
-  {
-    "code": "GL-FU-007",
-    "name": "Separating Funnel 500ml"
-  },
-  {
-    "code": "GL-FU-008",
-    "name": "Buchner Funnel 75mm"
-  },
-  {
-    "code": "GL-FU-009",
-    "name": "Buchner Funnel 100mm"
-  },
-  {
-    "code": "GL-FU-010",
-    "name": "Dropping Funnel 100ml"
-  },
-  {
-    "code": "PL-BK-001",
-    "name": "Plastic Beaker 50ml"
-  },
-  {
-    "code": "PL-BK-002",
-    "name": "Plastic Beaker 100ml"
-  },
-  {
-    "code": "PL-BK-003",
-    "name": "Plastic Beaker 250ml"
-  },
-  {
-    "code": "PL-BK-004",
-    "name": "Plastic Beaker 500ml"
-  },
-  {
-    "code": "PL-BK-005",
-    "name": "Plastic Beaker 1000ml"
-  },
-  {
-    "code": "PL-CY-001",
-    "name": "Plastic Measuring Cylinder 10ml"
-  },
-  {
-    "code": "PL-CY-002",
-    "name": "Plastic Measuring Cylinder 25ml"
-  },
-  {
-    "code": "PL-CY-003",
-    "name": "Plastic Measuring Cylinder 50ml"
-  },
-  {
-    "code": "PL-CY-004",
-    "name": "Plastic Measuring Cylinder 100ml"
-  },
-  {
-    "code": "PL-CY-005",
-    "name": "Plastic Measuring Cylinder 250ml"
-  },
-  {
-    "code": "PL-CY-006",
-    "name": "Plastic Measuring Cylinder 500ml"
-  },
-  {
-    "code": "PL-CY-007",
-    "name": "Plastic Measuring Cylinder 1000ml"
-  },
-  {
-    "code": "PL-TB-001",
-    "name": "Plastic Test Tubes 15x150mm (Pack of 10)"
-  },
-  {
-    "code": "PL-TB-002",
-    "name": "Plastic Test Tubes 18x150mm (Pack of 10)"
-  },
-  {
-    "code": "PL-TB-003",
-    "name": "Centrifuge Tube 15ml (Pack of 50)"
-  },
-  {
-    "code": "PL-TB-004",
-    "name": "Centrifuge Tube 50ml (Pack of 50)"
-  },
-  {
-    "code": "PL-TB-005",
-    "name": "Microcentrifuge Tube 1.5ml (Pack of 100)"
-  },
-  {
-    "code": "PL-TB-006",
-    "name": "Microcentrifuge Tube 2ml (Pack of 100)"
-  },
-  {
-    "code": "PL-TB-007",
-    "name": "PCR Tubes 0.2ml (Pack of 100)"
-  },
-  {
-    "code": "PL-TB-008",
-    "name": "Cryogenic Vials 1ml (Pack of 100)"
-  },
-  {
-    "code": "PL-TB-009",
-    "name": "Cryogenic Vials 2ml (Pack of 100)"
-  },
-  {
-    "code": "PL-TB-010",
-    "name": "Sample Vials 2ml (Pack of 100)"
-  },
-  {
-    "code": "RG-CH-001",
-    "name": "Sodium Chloride AR 500g"
-  },
-  {
-    "code": "RG-CH-002",
-    "name": "Potassium Chloride AR 500g"
-  },
-  {
-    "code": "RG-CH-003",
-    "name": "Calcium Chloride AR 500g"
-  },
-  {
-    "code": "RG-CH-004",
-    "name": "Magnesium Chloride AR 500g"
-  },
-  {
-    "code": "RG-CH-005",
-    "name": "Ammonium Chloride AR 500g"
-  },
-  {
-    "code": "RG-CH-006",
-    "name": "Sodium Hydroxide AR 500g"
-  },
-  {
-    "code": "RG-CH-007",
-    "name": "Potassium Hydroxide AR 500g"
-  },
-  {
-    "code": "RG-CH-008",
-    "name": "Calcium Hydroxide AR 500g"
-  },
-  {
-    "code": "RG-CH-009",
-    "name": "Sodium Carbonate AR 500g"
-  },
-  {
-    "code": "RG-CH-010",
-    "name": "Potassium Carbonate AR 500g"
-  },
-  {
-    "code": "RG-CH-011",
-    "name": "Calcium Carbonate AR 500g"
-  },
-  {
-    "code": "RG-CH-012",
-    "name": "Sodium Bicarbonate AR 500g"
-  },
-  {
-    "code": "RG-CH-013",
-    "name": "Potassium Bicarbonate AR 500g"
-  },
-  {
-    "code": "RG-CH-014",
-    "name": "Sodium Sulphate AR 500g"
-  },
-  {
-    "code": "RG-CH-015",
-    "name": "Potassium Sulphate AR 500g"
-  },
-  {
-    "code": "RG-CH-016",
-    "name": "Magnesium Sulphate AR 500g"
-  },
-  {
-    "code": "RG-CH-017",
-    "name": "Copper Sulphate AR 500g"
-  },
-  {
-    "code": "RG-CH-018",
-    "name": "Iron Sulphate AR 500g"
-  },
-  {
-    "code": "RG-CH-019",
-    "name": "Zinc Sulphate AR 500g"
-  },
-  {
-    "code": "RG-CH-020",
-    "name": "Aluminium Sulphate AR 500g"
-  },
-  {
-    "code": "RG-CH-021",
-    "name": "Sodium Nitrate AR 500g"
-  },
-  {
-    "code": "RG-CH-022",
-    "name": "Potassium Nitrate AR 500g"
-  },
-  {
-    "code": "RG-CH-023",
-    "name": "Calcium Nitrate AR 500g"
-  },
-  {
-    "code": "RG-CH-024",
-    "name": "Magnesium Nitrate AR 500g"
-  },
-  {
-    "code": "RG-CH-025",
-    "name": "Ammonium Nitrate AR 500g"
-  },
-  {
-    "code": "RG-CH-026",
-    "name": "Sodium Phosphate AR 500g"
-  },
-  {
-    "code": "RG-CH-027",
-    "name": "Potassium Phosphate AR 500g"
-  },
-  {
-    "code": "RG-CH-028",
-    "name": "Calcium Phosphate AR 500g"
-  },
-  {
-    "code": "RG-CH-029",
-    "name": "Sodium Acetate AR 500g"
-  },
-  {
-    "code": "RG-CH-030",
-    "name": "Potassium Acetate AR 500g"
-  },
-  {
-    "code": "RG-CH-031",
-    "name": "Calcium Acetate AR 500g"
-  },
-  {
-    "code": "RG-CH-032",
-    "name": "Sodium Citrate AR 500g"
-  },
-  {
-    "code": "RG-CH-033",
-    "name": "Potassium Citrate AR 500g"
-  },
-  {
-    "code": "RG-CH-034",
-    "name": "Citric Acid AR 500g"
-  },
-  {
-    "code": "RG-CH-035",
-    "name": "Tartaric Acid AR 500g"
-  },
-  {
-    "code": "RG-CH-036",
-    "name": "Oxalic Acid AR 500g"
-  },
-  {
-    "code": "RG-CH-037",
-    "name": "Succinic Acid AR 500g"
-  },
-  {
-    "code": "RG-CH-038",
-    "name": "Benzoic Acid AR 500g"
-  },
-  {
-    "code": "RG-CH-039",
-    "name": "Salicylic Acid AR 500g"
-  },
-  {
-    "code": "RG-CH-040",
-    "name": "Ascorbic Acid AR 500g"
-  },
-  {
-    "code": "RG-CH-041",
-    "name": "Glucose AR 500g"
-  },
-  {
-    "code": "RG-CH-042",
-    "name": "Fructose AR 500g"
-  },
-  {
-    "code": "RG-CH-043",
-    "name": "Sucrose AR 500g"
-  },
-  {
-    "code": "RG-CH-044",
-    "name": "Lactose AR 500g"
-  },
-  {
-    "code": "RG-CH-045",
-    "name": "Starch AR 500g"
-  },
-  {
-    "code": "RG-CH-046",
-    "name": "Cellulose AR 500g"
-  },
-  {
-    "code": "RG-CH-047",
-    "name": "Urea AR 500g"
-  },
-  {
-    "code": "RG-CH-048",
-    "name": "Thiourea AR 500g"
-  },
-  {
-    "code": "RG-CH-049",
-    "name": "Phenol AR 500g"
-  },
-  {
-    "code": "RG-CH-050",
-    "name": "Aniline AR 500g"
-  },
-  {
-    "code": "RG-CH-051",
-    "name": "Benzaldehyde AR 500g"
-  },
-  {
-    "code": "RG-CH-052",
-    "name": "Acetaldehyde AR 500g"
-  },
-  {
-    "code": "RG-CH-053",
-    "name": "Formaldehyde AR 500g"
-  },
-  {
-    "code": "RG-CH-054",
-    "name": "Acetone AR 500g"
-  },
-  {
-    "code": "RG-CH-055",
-    "name": "Methyl Ethyl Ketone AR 500g"
-  },
-  {
-    "code": "RG-CH-056",
-    "name": "Diethyl Ether AR 500g"
-  },
-  {
-    "code": "RG-CH-057",
-    "name": "Petroleum Ether AR 500g"
-  },
-  {
-    "code": "RG-CH-058",
-    "name": "Chloroform AR 500g"
-  },
-  {
-    "code": "RG-CH-059",
-    "name": "Carbon Tetrachloride AR 500g"
-  },
-  {
-    "code": "RG-CH-060",
-    "name": "Dichloromethane AR 500g"
-  },
-  {
-    "code": "RG-CH-061",
-    "name": "Ethyl Acetate AR 500g"
-  },
-  {
-    "code": "RG-CH-062",
-    "name": "Methyl Acetate AR 500g"
-  },
-  {
-    "code": "RG-CH-063",
-    "name": "Butyl Acetate AR 500g"
-  },
-  {
-    "code": "RG-CH-064",
-    "name": "Iodine AR 100g"
-  },
-  {
-    "code": "RG-CH-065",
-    "name": "Bromine AR 100g"
-  },
-  {
-    "code": "RG-CH-066",
-    "name": "Potassium Iodide AR 500g"
-  },
-  {
-    "code": "RG-CH-067",
-    "name": "Potassium Bromide AR 500g"
-  },
-  {
-    "code": "RG-CH-068",
-    "name": "Silver Nitrate AR 100g"
-  },
-  {
-    "code": "RG-CH-069",
-    "name": "Lead Nitrate AR 500g"
-  },
-  {
-    "code": "RG-CH-070",
-    "name": "Copper Nitrate AR 500g"
-  },
-  {
-    "code": "RG-CH-071",
-    "name": "Iron Nitrate AR 500g"
-  },
-  {
-    "code": "RG-CH-072",
-    "name": "Manganese Dioxide AR 500g"
-  },
-  {
-    "code": "RG-CH-073",
-    "name": "Potassium Permanganate AR 500g"
-  }
+{"code": "EQ-ME-024", "name": "10g Mass Slotted"},
+{"code": "EQ-ME-021", "name": "20g Mass Slotted"},
+{"code": "EQ-ME-020", "name": "20g Mass with Hook"},
+{"code": "GL-TB-011", "name": "20ml Crimp Vials Clear Glass"},
+{"code": "CS-DP-005", "name": "20mm Crimp Caps & Septa"},
+{"code": "EQ-ME-012", "name": "3 Balls Spirometer Respiratory Lungs Exercise"},
+{"code": "RG-CH-076", "name": "3.5 Dinitrosalicylic Acid 97%"},
+{"code": "EQ-ME-019", "name": "50g Mass with Hook"},
+{"code": "EQ-ME-023", "name": "5g Mass Slotted"},
+{"code": "RG-CH-085", "name": "Acetamide 500g"},
+{"code": "RG-CH-111", "name": "Acetonitrile AR 2.5L"},
+{"code": "EQ-EL-001", "name": "Acid Dispenser"},
+{"code": "EQ-ME-014", "name": "Acrylic Dynamometer"},
+{"code": "RG-CH-080", "name": "Activated Charcoal 500g"},
+{"code": "RG-CH-092", "name": "Alizarin Reds Indicator 10g"},
+{"code": "RG-CH-088", "name": "Aluminium Fine Powder AR 500g"},
+{"code": "RG-CH-091", "name": "Aluminium Hydroxide Gel 500g"},
+{"code": "RG-CH-086", "name": "Aluminium Oxide 500g"},
+{"code": "RG-CH-056", "name": "Ammonium Carbonate 500g"},
+{"code": "RG-CH-087", "name": "Ammonium Ferric Sulphate 500g"},
+{"code": "RG-CH-089", "name": "Ammonium Ferric Sulphate 500g"},
+{"code": "RG-CH-090", "name": "Ammonium Ferrous Sulphate 500g"},
+{"code": "RG-CH-057", "name": "Ammonium Sulphate 500g"},
+{"code": "EQ-EL-034", "name": "Anemometer (AVM-07) HTC Instrument"},
+{"code": "RG-CH-009", "name": "Arsenic AAA Standard 1ltr"},
+{"code": "GL-BK-001", "name": "Aspirator Bottle"},
+{"code": "CS-DP-006", "name": "Auto Lance Safety Lancers"},
+{"code": "EQ-EL-002", "name": "Automatic Burette 50ml"},
+{"code": "EQ-EL-027", "name": "Automatic Soap Dispenser"},
+{"code": "CS-DP-016", "name": "Bacteria Cone Shaped Slides"},
+{"code": "RG-AG-019", "name": "Bairdparker Agar 500g"},
+{"code": "EQ-ME-001", "name": "Ball and Ring"},
+{"code": "EQ-ME-002", "name": "Bar Magnet"},
+{"code": "RG-CH-011", "name": "Barfoeds Reagent 125ml"},
+{"code": "RG-CH-095", "name": "Barium Chloride 500g"},
+{"code": "RG-CH-094", "name": "Barium Nitrate 500g"},
+{"code": "RG-CH-093", "name": "Barium Sulphate 500g"},
+{"code": "EQ-EL-003", "name": "Barometer"},
+{"code": "EQ-EL-004", "name": "Battery Eliminator"},
+{"code": "TL-ST-028", "name": "Beaker Brushes"},
+{"code": "GL-TB-001", "name": "Beehive Shelf"},
+{"code": "GL-TB-016", "name": "Beehive Shelf 75mm"},
+{"code": "EQ-ME-016", "name": "Bimetallic Strip"},
+{"code": "RG-CH-058", "name": "Borax 99.5% AR 500g"},
+{"code": "RG-CH-059", "name": "Boric Acid 99.5% AR 500g"},
+{"code": "GL-FU-001", "name": "Buchner Funnels"},
+{"code": "RG-AG-007", "name": "Buffered Peptone Water 500g"},
+{"code": "EQ-EL-005", "name": "Bunsen Burner"},
+{"code": "GL-CY-001", "name": "Burette Glass 50ml"},
+{"code": "PL-CY-001", "name": "Burette Plastic 50ml"},
+{"code": "GL-FU-002", "name": "Bush Funnel"},
+{"code": "RG-AG-020", "name": "Bustarea Peptone Water 500g"},
+{"code": "RG-CH-060", "name": "Calcium Acetate 500g"},
+{"code": "RG-CH-065", "name": "Calcium Carbide Granular 500g"},
+{"code": "RG-CH-096", "name": "Calcium Carbonate 500g"},
+{"code": "RG-CH-097", "name": "Calcium Hydroxide 500g"},
+{"code": "RG-CH-062", "name": "Calcium Sulphate 500g"},
+{"code": "RG-CH-084", "name": "Calcium Sulphate Dihydrate 500g"},
+{"code": "RG-CH-083", "name": "Calcium Sulphate Dihydrate AR 500g"},
+{"code": "RG-CH-066", "name": "Calibration Solution 25ml"},
+{"code": "EQ-OP-019", "name": "Camera Incida"},
+{"code": "EQ-EL-006", "name": "Capacitor 1000uf"},
+{"code": "EQ-EL-040", "name": "Capacitor 10uf"},
+{"code": "EQ-EL-007", "name": "Capacitor 500uf"},
+{"code": "EQ-EL-047", "name": "Capacitors in Case 100uf"},
+{"code": "EQ-EL-048", "name": "Capacitors in Case 500uf"},
+{"code": "EQ-EL-008", "name": "Capillary Apparatus"},
+{"code": "CS-DP-024", "name": "Capillary Tubes (100pcs/vial)"},
+{"code": "RG-ST-009", "name": "Carbol Fuchsin Powder 25g R/L"},
+{"code": "RG-ST-004", "name": "Carbol Fuchsin Powder M.S 25g"},
+{"code": "RG-CH-107", "name": "Carbon Disulphide 2.5L"},
+{"code": "RG-CH-003", "name": "Carbon Rod"},
+{"code": "RG-CH-077", "name": "Casein Soluble 500g"},
+{"code": "PL-TB-002", "name": "Centrifuge 25ml (25pcs)"},
+{"code": "PL-TB-001", "name": "Centrifuge Tube 15ml (25pcs)"},
+{"code": "PL-TB-007", "name": "Centrifuge Tube 15ml (25pcs/pack)"},
+{"code": "RG-CH-063", "name": "Cholesterol Stock Standard 0.1% 125ml"},
+{"code": "CS-PP-005", "name": "Chromatography Paper A3 (10 sheet/pack)"},
+{"code": "RG-CH-030", "name": "Chromic Acid Solution Test 500ml"},
+{"code": "RG-CH-064", "name": "Chromium Trioxide Flakes 500g"},
+{"code": "EQ-MO-001", "name": "Circulatory Model"},
+{"code": "RG-CH-006", "name": "Cobalt AAS Standard 1ltr"},
+{"code": "CS-PP-009", "name": "Cobalt Chloride Paper"},
+{"code": "EQ-EL-045", "name": "Colorometer"},
+{"code": "EQ-OP-001", "name": "Concave Lens"},
+{"code": "GL-FL-014", "name": "Conical Flask 1000ml"},
+{"code": "GL-FL-001", "name": "Conical Flask 100ml"},
+{"code": "GL-FL-016", "name": "Conical Flask 100ml"},
+{"code": "GL-FL-018", "name": "Conical Flask 24/29"},
+{"code": "GL-FL-002", "name": "Conical Flask 250ml"},
+{"code": "GL-FL-013", "name": "Conical Flask 500ml"},
+{"code": "TL-ST-001", "name": "Connecting Leads Banana"},
+{"code": "EQ-OP-002", "name": "Convex Lens"},
+{"code": "RG-AG-018", "name": "Cooke Ross Bengal 500g"},
+{"code": "GL-TB-013", "name": "Copline Jar"},
+{"code": "RG-CH-007", "name": "Copper AAS Standard 1ltr"},
+{"code": "EQ-EL-009", "name": "Copper Colorometer"},
+{"code": "RG-CH-082", "name": "Copper II Carbonate Basic AR 500g"},
+{"code": "RG-CH-061", "name": "Copper II Chloride AR 500g"},
+{"code": "RG-CH-081", "name": "Copper Nitrate 500g"},
+{"code": "TL-ST-002", "name": "Cork One Hole 34/35"},
+{"code": "TL-ST-003", "name": "Cork Solid 34/35"},
+{"code": "TL-ST-004", "name": "Cork Solid No.3"},
+{"code": "CS-DP-025", "name": "Cotton Wool 50g"},
+{"code": "TL-CL-003", "name": "Crocodile Clips"},
+{"code": "PL-TB-005", "name": "Cryovial 2ml (500pcs/pack)"},
+{"code": "PL-TB-004", "name": "Cryovial Box 5ml (10 wells)"},
+{"code": "PL-TB-006", "name": "Cryovial Tube 2ml (500pcs/pack)"},
+{"code": "EQ-MO-002", "name": "Crystal Model Set Graphite"},
+{"code": "RG-ST-001", "name": "Crystal Violet 1kg"},
+{"code": "GL-TB-010", "name": "Culture Tubes 16x150mm with Caps"},
+{"code": "GL-TB-012", "name": "Cuvettes, Cells & Flow Cells 3.5ml/3500µl"},
+{"code": "RG-CH-075", "name": "D + Ribose 25g"},
+{"code": "RG-CH-078", "name": "D-(-)- Fructose 500g"},
+{"code": "RG-CH-017", "name": "D-(+) Mannose 25g"},
+{"code": "EQ-EL-010", "name": "Daniel Cell"},
+{"code": "EQ-MO-010", "name": "Delivery Manikin (1 pes)"},
+{"code": "GL-TB-002", "name": "Delivery Tubes L"},
+{"code": "RG-CH-098", "name": "Diastase Amylase 100g"},
+{"code": "RG-CH-108", "name": "Diethyl Ether 2.5L AR"},
+{"code": "RG-CH-014", "name": "Diethyl Ether 500ml"},
+{"code": "EQ-EL-038", "name": "Digital Orbital Shaker"},
+{"code": "RG-CH-038", "name": "Dimethylformamide 99% 500ml"},
+{"code": "EQ-EL-028", "name": "Dispenser Electrical AL"},
+{"code": "CS-DP-001", "name": "Disposable Face Mask"},
+{"code": "TL-ST-024", "name": "Dissecting Tray Without Wax"},
+{"code": "GL-FL-009", "name": "Distillation Flask 250ml"},
+{"code": "EQ-MO-003", "name": "DNA Model"},
+{"code": "EQ-ME-003", "name": "Dynamic Trolley"},
+{"code": "EQ-EL-011", "name": "Electronic Scale"},
+{"code": "RG-AG-017", "name": "EMB Agar Levine 500g"},
+{"code": "RG-ST-010", "name": "Eosin Methylene Blue Leishmans Stain 500g"},
+{"code": "RG-AG-016", "name": "Esculin Agar 500g"},
+{"code": "RG-CH-105", "name": "Ethanedol 2.5L"},
+{"code": "RG-CH-110", "name": "Ethyl Acetate Hi-AR 2.5L"},
+{"code": "RG-CH-114", "name": "Ethylene Glycol Mono AR"},
+{"code": "RG-CH-079", "name": "Ethylenediamine Tetra Acetic Acid 99.5%"},
+{"code": "GL-FL-003", "name": "Evaporating Dish"},
+{"code": "CS-DP-020", "name": "Face Mask KN95 (50 pcs)"},
+{"code": "CS-DP-013", "name": "Face Masks - Non Medical"},
+{"code": "CS-DP-027", "name": "Face Masks (50pcs)"},
+{"code": "RG-CH-067", "name": "Ferric Nitrate 500g"},
+{"code": "RG-CH-073", "name": "Ferric Nitrate Monohydrate 500g"},
+{"code": "RG-CH-100", "name": "Ferric Sulphate 500g"},
+{"code": "RG-CH-102", "name": "Ferrous Chloride 500g"},
+{"code": "RG-CH-099", "name": "Ferrous Sulphate 500g"},
+{"code": "RG-ST-007", "name": "Fields Stain A 25ml"},
+{"code": "RG-ST-008", "name": "Fields Stain B 25ml"},
+{"code": "RG-ST-003", "name": "Fields Stain Powder A 25g"},
+{"code": "CS-PP-001", "name": "Filter Paper"},
+{"code": "GL-FL-017", "name": "Filtration Bucher Flask 250ml"},
+{"code": "RG-CH-101", "name": "Flakes Egg Albumin 25g"},
+{"code": "GL-FL-004", "name": "Flat Bottom Flask 250ml"},
+{"code": "EQ-MO-004", "name": "Frog Model"},
+{"code": "EQ-EL-039", "name": "Function Generator 5mhz"},
+{"code": "EQ-EL-042", "name": "Function Generator 5mhz"},
+{"code": "GL-FU-003", "name": "Funnels"},
+{"code": "GL-TB-003", "name": "Gas Jar"},
+{"code": "TL-ST-029", "name": "Gas Tap"},
+{"code": "RG-ST-006", "name": "Giemsas Powder Stain 10g"},
+{"code": "GL-BK-002", "name": "Glass Beaker 100ml"},
+{"code": "GL-BK-003", "name": "Glass Beaker 10ml"},
+{"code": "GL-BK-004", "name": "Glass Beaker 250ml"},
+{"code": "GL-BK-005", "name": "Glass Beaker 25ml"},
+{"code": "GL-BK-006", "name": "Glass Beaker 500ml"},
+{"code": "GL-BK-007", "name": "Glass Beaker 50ml"},
+{"code": "GL-BK-021", "name": "Glass Beaker Low Form 50ml"},
+{"code": "EQ-OP-003", "name": "Glass Block"},
+{"code": "EQ-OP-004", "name": "Glass Block 75x50x18mm"},
+{"code": "GL-FU-006", "name": "Glass Funnel 70mm"},
+{"code": "GL-FU-004", "name": "Glass Funnel 75mm"},
+{"code": "GL-CY-002", "name": "Glass Measuring Cylinder 10ml"},
+{"code": "GL-CY-003", "name": "Glass Measuring Cylinder 25ml"},
+{"code": "GL-CY-005", "name": "Glass Measuring Cylinder 25ml"},
+{"code": "GL-CY-004", "name": "Glass Measuring Cylinder 50ml"},
+{"code": "EQ-OP-005", "name": "Glass Prism"},
+{"code": "EQ-OP-020", "name": "Glass Slab 10x60x18mm"},
+{"code": "TL-ST-005", "name": "Glass Stirrer"},
+{"code": "EQ-EL-012", "name": "Gold Leaf Electroscope"},
+{"code": "EQ-EL-032", "name": "Haematocrite Reader"},
+{"code": "EQ-OP-006", "name": "Hand Lens"},
+{"code": "EQ-EL-013", "name": "Heating Mantle 250ml"},
+{"code": "EQ-EL-014", "name": "Heating Mantle 500ml"},
+{"code": "EQ-ME-004", "name": "Horse Shoe Magnet"},
+{"code": "EQ-MO-005", "name": "Human Ear Model"},
+{"code": "CS-DP-015", "name": "Human Histology Slides Set"},
+{"code": "EQ-MO-006", "name": "Human Skeleton"},
+{"code": "CS-DP-011", "name": "Hypodermic Needle 21g x 1 1/2"},
+{"code": "RG-CH-072", "name": "Indian Ink 125ml"},
+{"code": "EQ-EL-015", "name": "Inductor 10mh"},
+{"code": "EQ-EL-041", "name": "Inductor 16 ohm"},
+{"code": "EQ-EL-016", "name": "Inductor 160mh"},
+{"code": "EQ-EL-026", "name": "Infrared Thermometer"},
+{"code": "EQ-EL-036", "name": "Infusion Pump"},
+{"code": "RG-CH-008", "name": "Iron AAS Standard 1ltr"},
+{"code": "RG-CH-103", "name": "Iron Turnings 500g"},
+{"code": "TL-CL-001", "name": "Joint Clips 29/32"},
+{"code": "RG-CH-012", "name": "Kovacs Reagent 125ml"},
+{"code": "EQ-EL-017", "name": "Lab Thermometer"},
+{"code": "TL-ST-006", "name": "Lab Tray"},
+{"code": "RG-CH-036", "name": "Lactose CP 500g"},
+{"code": "CS-DP-012", "name": "Lancets Pink 21g"},
+{"code": "RG-CH-071", "name": "Lead Acetate 500g"},
+{"code": "RG-CH-070", "name": "Lead Acetate AR 500g"},
+{"code": "RG-CH-068", "name": "Lead Bromide 500g"},
+{"code": "RG-ST-005", "name": "Leishmans Stain MC 25g"},
+{"code": "EQ-OP-007", "name": "Lens Holder V Wood"},
+{"code": "GL-TB-004", "name": "Liebig Condenser 300mm"},
+{"code": "RG-CH-069", "name": "Lithium Metal 99% 25g"},
+{"code": "CS-PP-007", "name": "Litmus Blue Paper"},
+{"code": "RG-CH-021", "name": "Litmus Granular 500g"},
+{"code": "RG-CH-018", "name": "Litmus Paper Powder 250g"},
+{"code": "CS-PP-008", "name": "Litmus Red Paper"},
+{"code": "TL-CL-002", "name": "Lumbo Clamp"},
+{"code": "RG-AG-013", "name": "Lysine Iron Agar 500g"},
+{"code": "RG-AG-006", "name": "M-FC Agar 500g"},
+{"code": "RG-AG-005", "name": "MacConkey Sorbitol Agar 500g Accumix"},
+{"code": "RG-AG-011", "name": "MacConkey Sorbitol Agar TM Media 500g"},
+{"code": "RG-CH-054", "name": "Magnesium Hydroxide Carbonate (Pentahydrate) 500g"},
+{"code": "RG-CH-024", "name": "Magnesium Nitrate Hexahydrate 500g"},
+{"code": "RG-CH-112", "name": "Magnesium Oxide Light 500g"},
+{"code": "RG-CH-001", "name": "Magnesium Ribbon"},
+{"code": "RG-CH-050", "name": "Magnesium Sulphate 500g"},
+{"code": "RG-CH-051", "name": "Magnesium Sulphate Heptahydrate AR 500g"},
+{"code": "RG-CH-005", "name": "Manganese AAS Standard 1ltr"},
+{"code": "RG-CH-022", "name": "Manganese Dioxide 500g"},
+{"code": "RG-CH-055", "name": "Mannitol 98% Extra Pure 500g"},
+{"code": "RG-AG-003", "name": "Mannitol Selenite Broth"},
+{"code": "RG-CH-053", "name": "Marble Chips 500g Ace"},
+{"code": "RG-CH-052", "name": "Marble Chips 500g Alpha"},
+{"code": "EQ-ME-005", "name": "Mass with Hook 20g"},
+{"code": "EQ-ME-006", "name": "Mass with Hook 50g"},
+{"code": "CS-DP-018", "name": "Meiosis Slides Set of 12 pcs"},
+{"code": "CS-PP-003", "name": "Membrane Filter 47mm Nylon Membrane 0.45µl"},
+{"code": "EQ-OP-008", "name": "Metal Magnifier"},
+{"code": "EQ-EL-018", "name": "Meter Bridge"},
+{"code": "RG-CH-115", "name": "Methyl Acetate 1ltr"},
+{"code": "RG-CH-035", "name": "Methyl Red Indicator AR 100g"},
+{"code": "EQ-OP-012", "name": "Micropipette Multichannel 8-Channel 40-300µl"},
+{"code": "CS-DP-022", "name": "Micropipette Tips Rack 16 Wells 20ml"},
+{"code": "CS-DP-023", "name": "Micropipette Tips Rack 96 Wells 1000µl"},
+{"code": "EQ-OP-009", "name": "Microscope"},
+{"code": "CS-DP-026", "name": "Microscope Plain Slides (50pcs/box)"},
+{"code": "RG-AG-008", "name": "MIO-Medium 500g"},
+{"code": "RG-CH-010", "name": "Molischs Reagent 125ml"},
+{"code": "TL-ST-026", "name": "Mortar and Pestle 75mm"},
+{"code": "EQ-OP-016", "name": "Multichannel Micropipette 12-Channel 20-200µl"},
+{"code": "EQ-OP-015", "name": "Multichannel Micropipette 8-Channel 0.5-10µl"},
+{"code": "EQ-OP-014", "name": "Multichannel Micropipette 8-Channel 10-100µl"},
+{"code": "EQ-OP-013", "name": "Multichannel Micropipette 8-Channel 20-200µl"},
+{"code": "EQ-EL-030", "name": "Nano Spray"},
+{"code": "EQ-MO-007", "name": "Nerve Cell Model"},
+{"code": "TL-ST-007", "name": "Nichrome Loop Holder"},
+{"code": "CS-DP-002", "name": "Nichrome Wire"},
+{"code": "RG-CH-023", "name": "Nickel Sulphate AR 100g"},
+{"code": "RG-CH-019", "name": "Ninhydrin AR 500g"},
+{"code": "EQ-OP-010", "name": "Optical Pin"},
+{"code": "EQ-OP-011", "name": "Optical Pin Board"},
+{"code": "RG-ST-002", "name": "Orcein Stain Powder for Microscope 5g"},
+{"code": "EQ-ME-007", "name": "Overflow Can"},
+{"code": "EQ-EL-029", "name": "Oxygen Regulator"},
+{"code": "CS-PP-004", "name": "Paper Towel Roll"},
+{"code": "EQ-MO-008", "name": "Paternity Model"},
+{"code": "CS-DP-017", "name": "Pathology Slides"},
+{"code": "CS-DP-019", "name": "Pathology Slides Set of 6pcs"},
+{"code": "CS-DP-028", "name": "PCR Plate"},
+{"code": "CS-DP-021", "name": "PCR Plate 0.2ml 96 Wells (10 plates/box)"},
+{"code": "CS-DP-014", "name": "PCR Plate Films"},
+{"code": "PL-TB-003", "name": "PCR Storage Box 82ml"},
+{"code": "PL-TB-008", "name": "PCR Storage Box 96"},
+{"code": "EQ-ME-008", "name": "Pendulum Bobs"},
+{"code": "RG-CH-104", "name": "Perchloric Acid 60% 2.5L"},
+{"code": "TL-ST-027", "name": "Pestle"},
+{"code": "GL-TB-014", "name": "Petri Dish 4'' BG Glass"},
+{"code": "GL-TB-015", "name": "Petri Dish 75mm"},
+{"code": "RG-CH-109", "name": "Petroleum Ether 40-60 AR"},
+{"code": "RG-CH-027", "name": "Phenol Carbolic Acid 500ml"},
+{"code": "RG-CH-004", "name": "Phenol Crystal AR 500g"},
+{"code": "RG-CH-026", "name": "Phosphate Buffer 500ml"},
+{"code": "RG-CH-028", "name": "Phosphate Buffer 500ml pH 7.2"},
+{"code": "EQ-OP-018", "name": "Pin Hole Camera"},
+{"code": "CS-DP-034", "name": "Pipette 5ml"},
+{"code": "CS-DP-036", "name": "Pipette Disposable 10ml"},
+{"code": "CS-DP-035", "name": "Pipette Disposable 5ml"},
+{"code": "CS-DP-010", "name": "Pipette Tips 1000µl Filter"},
+{"code": "CS-DP-031", "name": "Pipette Tips 10ul"},
+{"code": "CS-DP-008", "name": "Pipette Tips 10µl Filter"},
+{"code": "CS-DP-029", "name": "Pipette Tips 200ul"},
+{"code": "CS-DP-009", "name": "Pipette Tips 200µl Filter"},
+{"code": "CS-DP-030", "name": "Pipette Tips 20ul"},
+{"code": "CS-DP-033", "name": "Pipettes 2ml"},
+{"code": "PL-BK-001", "name": "Plastic Beaker 100ml"},
+{"code": "PL-BK-008", "name": "Plastic Beaker 100ml"},
+{"code": "PL-BK-002", "name": "Plastic Beaker 250ml"},
+{"code": "PL-BK-010", "name": "Plastic Beaker 250ml"},
+{"code": "PL-BK-012", "name": "Plastic Beaker 250ml"},
+{"code": "PL-BK-011", "name": "Plastic Beaker 500ml"},
+{"code": "PL-BK-003", "name": "Plastic Beaker 500ml"},
+{"code": "PL-BK-009", "name": "Plastic Beaker 500ml"},
+{"code": "PL-BK-004", "name": "Plastic Beaker 50ml"},
+{"code": "PL-FU-001", "name": "Plastic Funnel"},
+{"code": "PL-OP-001", "name": "Plastic Hand Lens"},
+{"code": "PL-CY-002", "name": "Plastic Measuring Cylinder 10ml"},
+{"code": "PL-CY-006", "name": "Plastic Measuring Cylinder 10ml"},
+{"code": "PL-CY-003", "name": "Plastic Measuring Cylinder 25ml"},
+{"code": "PL-CY-004", "name": "Plastic Measuring Cylinder 50ml"},
+{"code": "PL-CY-005", "name": "Plastic Measuring Cylinder 50ml"},
+{"code": "PL-CY-007", "name": "Plastic Measuring Cylinder 5ml"},
+{"code": "PL-BK-005", "name": "Plastic Measuring Jug 250ml"},
+{"code": "PL-BK-006", "name": "Plastic Measuring Jug 500ml"},
+{"code": "CS-DP-032", "name": "Plate for PCR"},
+{"code": "TL-ST-008", "name": "Polypropylene Stoppers 24/29"},
+{"code": "TL-ST-009", "name": "Polypropylene Stoppers 29/32"},
+{"code": "TL-ST-010", "name": "Polypropylene Stoppers 34/35"},
+{"code": "RG-CH-047", "name": "Potassium Acetate HPLC 500g"},
+{"code": "RG-CH-045", "name": "Potassium Bibasic AR 500g"},
+{"code": "RG-CH-043", "name": "Potassium Bitartrate 500g"},
+{"code": "RG-CH-048", "name": "Potassium Bromide 500g"},
+{"code": "RG-CH-042", "name": "Potassium Bromide AR 100g"},
+{"code": "RG-CH-041", "name": "Potassium Bromide Extra Pure 100g"},
+{"code": "RG-CH-049", "name": "Potassium Carbonate 500g"},
+{"code": "RG-CH-118", "name": "Potassium Dichromate 500g"},
+{"code": "RG-CH-046", "name": "Potassium Hydrogen Phatalte 500g"},
+{"code": "RG-CH-119", "name": "Potassium Hydroxide Flakes 500g"},
+{"code": "RG-CH-044", "name": "Potassium Phosphate Monobasic AR 500g"},
+{"code": "RG-CH-106", "name": "Propan 2-01 2.5L"},
+{"code": "EQ-ME-009", "name": "Pulley Double"},
+{"code": "EQ-ME-017", "name": "Pulley Single Plastic"},
+{"code": "GL-BK-017", "name": "Reagent Bottle 500ml"},
+{"code": "GL-BK-020", "name": "Reagent Bottle 60ml with Cap"},
+{"code": "GL-BK-019", "name": "Reagent Bottle Soda Glass 60ml"},
+{"code": "GL-BK-022", "name": "Reagent Bottle with Cap 50ml"},
+{"code": "GL-BK-008", "name": "Reagent Bottles"},
+{"code": "GL-BK-009", "name": "Reagent Bottles 125ml"},
+{"code": "GL-BK-015", "name": "Reagent Bottles 125ml"},
+{"code": "GL-BK-014", "name": "Reagent Bottles 5g 60ml"},
+{"code": "GL-BK-018", "name": "Reagent Bottles Sodaglass 60ml"},
+{"code": "GL-BK-012", "name": "Reagent Bottles with Blue Cap 1000ml"},
+{"code": "GL-BK-013", "name": "Reagent Bottles with Blue Cap 250ml"},
+{"code": "GL-BK-016", "name": "Reagent Bottles with Screw Cap"},
+{"code": "EQ-EL-046", "name": "Resistance Box"},
+{"code": "EQ-EL-019", "name": "Resistor 500ohm"},
+{"code": "EQ-EL-052", "name": "Resistors 2kilo ohms"},
+{"code": "EQ-EL-050", "name": "Resistors in Case 100 ohms"},
+{"code": "EQ-EL-051", "name": "Resistors in Case 20k ohms"},
+{"code": "EQ-EL-049", "name": "Resistors in Case 500 ohms"},
+{"code": "TL-ST-011", "name": "Retort Stand"},
+{"code": "TL-ST-023", "name": "Retort Stand Base"},
+{"code": "TL-ST-012", "name": "Retort Stand Complete"},
+{"code": "EQ-EL-031", "name": "Rheostat"},
+{"code": "EQ-EL-020", "name": "Rheostat"},
+{"code": "EQ-MO-009", "name": "RNA Model"},
+{"code": "GL-FL-015", "name": "Round Bottle Glass 500ml"},
+{"code": "GL-FL-005", "name": "Round Bottom Flask 250ml"},
+{"code": "GL-FL-010", "name": "Round Bottom Flask 250ml"},
+{"code": "GL-FL-012", "name": "Round Bottom Flask 500ml"},
+{"code": "GL-FL-011", "name": "Round Bottom Flask 500ml"},
+{"code": "TL-ST-013", "name": "Rule 1m"},
+{"code": "TL-ST-031", "name": "Rule 1m"},
+{"code": "TL-ST-014", "name": "Rule 30cm"},
+{"code": "TL-ST-015", "name": "Rule 50cm"},
+{"code": "CS-DP-007", "name": "Safety Lancets Contact Activated"},
+{"code": "GL-BK-010", "name": "Sample Bottles"},
+{"code": "EQ-EL-021", "name": "Screw Gauge"},
+{"code": "GL-FU-005", "name": "Separating Funnel 500ml"},
+{"code": "RG-AG-015", "name": "SIM Medium 500g"},
+{"code": "RG-AG-014", "name": "Simmons Citrate Agar"},
+{"code": "TL-ST-030", "name": "Sink"},
+{"code": "CS-DP-003", "name": "Slides"},
+{"code": "EQ-ME-015", "name": "Slinky Spring Big"},
+{"code": "EQ-EL-033", "name": "Smart Digital Photo Colorimeter"},
+{"code": "GL-BK-011", "name": "Soda Glass"},
+{"code": "RG-CH-032", "name": "Sodium Acetate 500g"},
+{"code": "RG-CH-034", "name": "Sodium Acetate Monohydrate 500g"},
+{"code": "RG-CH-020", "name": "Sodium Alginate 500g"},
+{"code": "RG-CH-016", "name": "Sodium Biselenite 100g"},
+{"code": "RG-CH-037", "name": "Sodium Carbonate 500g"},
+{"code": "RG-CH-002", "name": "Sodium Chloride Crystal Model"},
+{"code": "RG-CH-040", "name": "Sodium Metal Lumps 500g"},
+{"code": "RG-CH-117", "name": "Sodium Sulphate 99% AR 500g"},
+{"code": "RG-CH-039", "name": "Sodium Sulphide 500g"},
+{"code": "RG-CH-116", "name": "Sodium Theosulphate 500g"},
+{"code": "CS-PP-002", "name": "Soft Board"},
+{"code": "EQ-EL-022", "name": "Spirit Lamp"},
+{"code": "EQ-EL-044", "name": "Spirit Lamp 60ml"},
+{"code": "EQ-ME-013", "name": "Spring Balance"},
+{"code": "EQ-ME-010", "name": "Spring Balance 1kg"},
+{"code": "EQ-ME-022", "name": "100g Mass with Hook"},
+{"code": "RG-CH-025", "name": "Potassium Sorbate Granular 500g"},
+{"code": "TL-ST-016", "name": "Staining Rack"},
+{"code": "EQ-EL-023", "name": "Stop Watch"},
+{"code": "RG-CH-113", "name": "Sucrose 500g"},
+{"code": "RG-CH-031", "name": "Tartaric Acid AR 500g"},
+{"code": "CS-DP-004", "name": "TBA"},
+{"code": "GL-TB-018", "name": "Test Tube 16x150"},
+{"code": "GL-TB-019", "name": "Test Tube 18x150"},
+{"code": "GL-TB-017", "name": "Test Tube 25x150"},
+{"code": "TL-ST-017", "name": "Test Tube Brush"},
+{"code": "TL-ST-018", "name": "Test Tube Holder"},
+{"code": "TL-ST-032", "name": "Test Tube Rack"},
+{"code": "TL-ST-022", "name": "Test Tube Rack"},
+{"code": "TL-ST-033", "name": "Test Tube Rack"},
+{"code": "TL-ST-019", "name": "Test Tube Rack"},
+{"code": "TL-ST-025", "name": "Test Tube Rack Metal"},
+{"code": "GL-TB-005", "name": "Test Tubes 15x150mm"},
+{"code": "GL-TB-006", "name": "Test Tubes 18x150mm"},
+{"code": "GL-TB-007", "name": "Test Tubes 25x150mm"},
+{"code": "RG-CH-015", "name": "Tetramethyl Ethylenediamine 100ml"},
+{"code": "RG-CH-013", "name": "Tin AAA Standard 1ltr"},
+{"code": "EQ-OP-017", "name": "Travelling Microscope"},
+{"code": "RG-CH-029", "name": "Triethanolamine for Synthesis 500g"},
+{"code": "RG-CH-033", "name": "Trihydrate 5kg"},
+{"code": "EQ-EL-024", "name": "Triple Beam Balance"},
+{"code": "RG-AG-009", "name": "Tripple Iron Sugar Agar 500g Accumix"},
+{"code": "RG-AG-002", "name": "Tripple Sugar Iron Agar 500g Accumix"},
+{"code": "RG-AG-001", "name": "Tryptone Bile Agar 500g"},
+{"code": "EQ-ME-026", "name": "Tuning Forks"},
+{"code": "CS-PP-006", "name": "Universal Paper"},
+{"code": "RG-AG-012", "name": "Urea Agar Base Christensen 500g"},
+{"code": "RG-AG-004", "name": "Urea Agar Christensen 500g"},
+{"code": "EQ-EL-037", "name": "UV Transilluminator"},
+{"code": "EQ-EL-025", "name": "Vernier Calliper"},
+{"code": "RG-AG-010", "name": "Violet Red Bile Glucose Agar 500g"},
+{"code": "GL-FL-006", "name": "Volumetric Flask"},
+{"code": "GL-FL-007", "name": "Volumetric Flask 1000ml"},
+{"code": "GL-FL-008", "name": "Volumetric Flask 25ml"},
+{"code": "GL-TB-008", "name": "Volumetric Pipette 25ml"},
+{"code": "PL-BK-007", "name": "Wash Bottles"},
+{"code": "PL-BK-008", "name": "Wash Bottles 250ml"},
+{"code": "GL-TB-020", "name": "Watch Glass"},
+{"code": "EQ-EL-035", "name": "Water Bath 6-Holes"},
+{"code": "TL-ST-020", "name": "Water Taps"},
+{"code": "GL-TB-009", "name": "Water Trough"},
+{"code": "GL-TB-021", "name": "Water Trough Big"},
+{"code": "EQ-ME-027", "name": "Weighting Bait Small"},
+{"code": "TL-ST-021", "name": "Wire Gauze"},
+{"code": "EQ-ME-018", "name": "Wood Blocks 2x2x5cm"},
+{"code": "EQ-ME-011", "name": "Wooden Block 2x2x5cm"},
+{"code": "EQ-ME-025", "name": "Wooden Protractor"},
+{"code": "RG-CH-074", "name": "Zinc Acetate AR 500g"}
+
 ];
 
         // Category mapping
@@ -2551,9 +1656,446 @@
         // Add price data to products
         const productPrices = {
             // Example prices - you'll need to update these with actual prices
-            "RG-CH-074": 25.99,
-            "RG-CH-075": 29.99,
-            "RG-CH-076": 19.99,
+"EQ-ME-024": 35,
+"EQ-ME-021": 65,
+"EQ-ME-020": 65,
+"GL-TB-011": 95,
+"CS-DP-005": 95,
+"EQ-ME-012": 380,
+"RG-CH-076": 950,
+"EQ-ME-019": 95,
+"EQ-ME-023": 95,
+"RG-CH-085": 850,
+"RG-CH-111": 2950,
+"EQ-EL-001": 0,
+"EQ-ME-014": 75,
+"RG-CH-080": 250,
+"RG-CH-092": 125,
+"RG-CH-088": 5000,
+"RG-CH-091": 350,
+"RG-CH-086": 350,
+"RG-CH-056": 350,
+"RG-CH-087": 450,
+"RG-CH-089": 450,
+"RG-CH-090": 450,
+"RG-CH-057": 450,
+"EQ-EL-034": 0,
+"RG-CH-009": 950,
+"GL-BK-001": 1500,
+"CS-DP-006": 4,
+"EQ-EL-002": 550,
+"EQ-EL-027": 1500,
+"CS-DP-016": 25,
+"RG-AG-019": 2550,
+"EQ-ME-001": 150,
+"EQ-ME-002": 180,
+"RG-CH-011": 450,
+"RG-CH-095": 650,
+"RG-CH-094": 650,
+"RG-CH-093": 650,
+"EQ-EL-003": 1850,
+"EQ-EL-004": 3580,
+"TL-ST-028": 35,
+"GL-TB-001": 75,
+"GL-TB-016": 75,
+"EQ-ME-016": 65,
+"RG-CH-058": 650,
+"RG-CH-059": 650,
+"GL-FU-001": 350,
+"RG-AG-007": 650,
+"EQ-EL-005": 250,
+"GL-CY-001": 250,
+"PL-CY-001": 180,
+"GL-FU-002": 350,
+"RG-AG-020": 650,
+"RG-CH-060": 350,
+"RG-CH-065": 350,
+"RG-CH-096": 350,
+"RG-CH-097": 350,
+"RG-CH-062": 350,
+"RG-CH-084": 350,
+"RG-CH-083": 450,
+"RG-CH-066": 180,
+"EQ-OP-019": 0,
+"EQ-EL-006": 95,
+"EQ-EL-040": 35,
+"EQ-EL-007": 75,
+"EQ-EL-047": 55,
+"EQ-EL-048": 75,
+"EQ-EL-008": 0,
+"CS-DP-024": 95,
+"RG-ST-009": 250,
+"RG-ST-004": 250,
+"RG-CH-107": 350,
+"RG-CH-003": 125,
+"RG-CH-077": 950,
+"PL-TB-002": 0,
+"PL-TB-001": 200,
+"PL-TB-007": 200,
+"RG-CH-063": 250,
+"CS-PP-005": 50,
+"RG-CH-030": 950,
+"RG-CH-064": 550,
+"EQ-MO-001": 750,
+"RG-CH-006": 950,
+"CS-PP-009": 65,
+"EQ-EL-045": 250,
+"EQ-OP-001": 35,
+"GL-FL-014": 350,
+"GL-FL-001": 65,
+"GL-FL-016": 65,
+"GL-FL-018": 85,
+"GL-FL-002": 75,
+"GL-FL-013": 95,
+"TL-ST-001": 95,
+"EQ-OP-002": 35,
+"RG-AG-018": 2550,
+"GL-TB-013": 75,
+"RG-CH-007": 950,
+"EQ-EL-009": 250,
+"RG-CH-082": 550,
+"RG-CH-061": 550,
+"RG-CH-081": 450,
+"TL-ST-002": 45,
+"TL-ST-003": 45,
+"TL-ST-004": 20,
+"CS-DP-025": 250,
+"TL-CL-003": 95,
+"PL-TB-005": 950,
+"PL-TB-004": 450,
+"PL-TB-006": 950,
+"EQ-MO-002": 750,
+"RG-ST-001": 850,
+"GL-TB-010": 250,
+"GL-TB-012": 450,
+"RG-CH-075": 250,
+"RG-CH-078": 450,
+"RG-CH-017": 250,
+"EQ-EL-010": 185,
+"EQ-MO-010": 2800,
+"GL-TB-002": 35,
+"RG-CH-098": 350,
+"RG-CH-108": 2950,
+"RG-CH-014": 950,
+"EQ-EL-038": 3850,
+"RG-CH-038": 950,
+"EQ-EL-028": 0,
+"CS-DP-001": 50,
+"TL-ST-024": 285,
+"GL-FL-009": 95,
+"EQ-MO-003": 750,
+"EQ-ME-003": 250,
+"EQ-EL-011": 650,
+"RG-AG-017": 2550,
+"RG-ST-010": 2550,
+"RG-AG-016": 2550,
+"RG-CH-105": 2950,
+"RG-CH-110": 2950,
+"RG-CH-114": 2950,
+"RG-CH-079": 2950,
+"GL-FL-003": 75,
+"CS-DP-020": 80,
+"CS-DP-013": 50,
+"CS-DP-027": 50,
+"RG-CH-067": 450,
+"RG-CH-073": 450,
+"RG-CH-100": 450,
+"RG-CH-102": 350,
+"RG-CH-099": 450,
+"RG-ST-007": 180,
+"RG-ST-008": 180,
+"RG-ST-003": 250,
+"CS-PP-001": 295,
+"GL-FL-017": 0,
+"RG-CH-101": 250,
+"GL-FL-004": 75,
+"EQ-MO-004": 750,
+"EQ-EL-039": 0,
+"EQ-EL-042": 0,
+"GL-FU-003": 25,
+"GL-TB-003": 250,
+"TL-ST-029": 250,
+"RG-ST-006": 185,
+"GL-BK-002": 65,
+"GL-BK-003": 25,
+"GL-BK-004": 75,
+"GL-BK-005": 35,
+"GL-BK-006": 95,
+"GL-BK-007": 45,
+"GL-BK-021": 45,
+"EQ-OP-003": 95,
+"EQ-OP-004": 95,
+"GL-FU-006": 25,
+"GL-FU-004": 35,
+"GL-CY-002": 25,
+"GL-CY-003": 35,
+"GL-CY-005": 35,
+"GL-CY-004": 45,
+"EQ-OP-005": 75,
+"EQ-OP-020": 95,
+"TL-ST-005": 55,
+"EQ-EL-012": 280,
+"EQ-EL-032": 0,
+"EQ-OP-006": 35,
+"EQ-EL-013": 1500,
+"EQ-EL-014": 4500,
+"EQ-ME-004": 75,
+"EQ-MO-005": 750,
+"CS-DP-015": 25,
+"EQ-MO-006": 4850,
+"CS-DP-011": 350,
+"RG-CH-072": 285,
+"EQ-EL-015": 45,
+"EQ-EL-041": 65,
+"EQ-EL-016": 150,
+"EQ-EL-026": 185,
+"EQ-EL-036": 350,
+"RG-CH-008": 950,
+"RG-CH-103": 350,
+"TL-CL-001": 65,
+"RG-CH-012": 250,
+"EQ-EL-017": 65,
+"TL-ST-006": 185,
+"RG-CH-036": 450,
+"CS-DP-012": 10,
+"RG-CH-071": 350,
+"RG-CH-070": 450,
+"RG-CH-068": 350,
+"RG-ST-005": 250,
+"EQ-OP-007": 35,
+"GL-TB-004": 150,
+"RG-CH-069": 250,
+"CS-PP-007": 65,
+"RG-CH-021": 5000,
+"RG-CH-018": 1250,
+"CS-PP-008": 65,
+"TL-CL-002": 285,
+"RG-AG-013": 2550,
+"RG-AG-006": 2550,
+"RG-AG-005": 2550,
+"RG-AG-011": 2250,
+"RG-CH-054": 450,
+"RG-CH-024": 450,
+"RG-CH-112": 450,
+"RG-CH-001": 180,
+"RG-CH-050": 350,
+"RG-CH-051": 450,
+"RG-CH-005": 950,
+"RG-CH-022": 450,
+"RG-CH-055": 850,
+"RG-AG-003": 450,
+"RG-CH-053": 350,
+"RG-CH-052": 350,
+"EQ-ME-005": 65,
+"EQ-ME-006": 95,
+"CS-DP-018": 385,
+"CS-PP-003": 550,
+"EQ-OP-008": 45,
+"EQ-EL-018": 495,
+"RG-CH-115": 650,
+"RG-CH-035": 1000,
+"EQ-OP-012": 2800,
+"CS-DP-022": 450,
+"CS-DP-023": 450,
+"EQ-OP-009": 4850,
+"CS-DP-026": 95,
+"RG-AG-008": 2550,
+"RG-CH-010": 185,
+"TL-ST-026": 95,
+"EQ-OP-016": 3500,
+"EQ-OP-015": 2500,
+"EQ-OP-014": 2600,
+"EQ-OP-013": 2700,
+"EQ-EL-030": 185,
+"EQ-MO-007": 750,
+"TL-ST-007": 55,
+"CS-DP-002": 95,
+"RG-CH-023": 550,
+"RG-CH-019": 7850,
+"EQ-OP-010": 95,
+"EQ-OP-011": 0,
+"RG-ST-002": 95,
+"EQ-ME-007": 75,
+"EQ-EL-029": 950,
+"CS-PP-004": 95,
+"EQ-MO-008": 0,
+"CS-DP-017": 25,
+"CS-DP-019": 150,
+"CS-DP-028": 285,
+"CS-DP-021": 450,
+"CS-DP-014": 450,
+"PL-TB-003": 450,
+"PL-TB-008": 35,
+"EQ-ME-008": 2950,
+"RG-CH-104": 0,
+"TL-ST-027": 12,
+"GL-TB-014": 7,
+"GL-TB-015": 2950,
+"RG-CH-109": 950,
+"RG-CH-027": 650,
+"RG-CH-004": 550,
+"RG-CH-026": 550,
+"RG-CH-028": 0,
+"EQ-OP-018": 15,
+"CS-DP-034": 25,
+"CS-DP-036": 10,
+"CS-DP-035": 1500,
+"CS-DP-010": 850,
+"CS-DP-031": 1000,
+"CS-DP-008": 1250,
+"CS-DP-029": 1250,
+"CS-DP-009": 1000,
+"CS-DP-030": 10,
+"CS-DP-033": 35,
+"PL-BK-001": 35,
+"PL-BK-008": 45,
+"PL-BK-002": 45,
+"PL-BK-010": 45,
+"PL-BK-012": 65,
+"PL-BK-011": 65,
+"PL-BK-003": 65,
+"PL-BK-009": 25,
+"PL-BK-004": 25,
+"PL-FU-001": 35,
+"PL-OP-001": 15,
+"PL-CY-002": 15,
+"PL-CY-006": 25,
+"PL-CY-003": 35,
+"PL-CY-004": 35,
+"PL-CY-005": 10,
+"PL-CY-007": 45,
+"PL-BK-005": 65,
+"PL-BK-006": 250,
+"CS-DP-032": 35,
+"TL-ST-008": 38,
+"TL-ST-009": 45,
+"TL-ST-010": 650,
+"RG-CH-047": 650,
+"RG-CH-045": 650,
+"RG-CH-043": 450,
+"RG-CH-048": 650,
+"RG-CH-042": 450,
+"RG-CH-041": 450,
+"RG-CH-049": 650,
+"RG-CH-118": 450,
+"RG-CH-046": 450,
+"RG-CH-119": 650,
+"RG-CH-044": 2950,
+"RG-CH-106": 35,
+"EQ-ME-009": 25,
+"EQ-ME-017": 250,
+"GL-BK-017": 95,
+"GL-BK-020": 65,
+"GL-BK-019": 75,
+"GL-BK-022": 0,
+"GL-BK-008": 55,
+"GL-BK-009": 55,
+"GL-BK-015": 65,
+"GL-BK-014": 65,
+"GL-BK-018": 350,
+"GL-BK-012": 150,
+"GL-BK-013": 350,
+"GL-BK-016": 450,
+"EQ-EL-046": 95,
+"EQ-EL-019": 35,
+"EQ-EL-052": 0,
+"EQ-EL-050": 0,
+"EQ-EL-051": 0,
+"EQ-EL-049": 150,
+"TL-ST-011": 150,
+"TL-ST-023": 450,
+"TL-ST-012": 450,
+"EQ-EL-031": 450,
+"EQ-EL-020": 750,
+"EQ-MO-009": 95,
+"GL-FL-015": 75,
+"GL-FL-005": 75,
+"GL-FL-010": 75,
+"GL-FL-012": 75,
+"GL-FL-011": 95,
+"TL-ST-013": 95,
+"TL-ST-031": 35,
+"TL-ST-014": 65,
+"TL-ST-015": 5,
+"CS-DP-007": 55,
+"GL-BK-010": 150,
+"EQ-EL-021": 180,
+"GL-FU-005": 2550,
+"RG-AG-015": 2550,
+"RG-AG-014": 4500,
+"TL-ST-030": 25,
+"CS-DP-003": 95,
+"EQ-ME-015": 0,
+"EQ-EL-033": 65,
+"GL-BK-011": 350,
+"RG-CH-032": 350,
+"RG-CH-034": 750,
+"RG-CH-020": 280,
+"RG-CH-016": 350,
+"RG-CH-037": 0,
+"RG-CH-002": 5000,
+"RG-CH-040": 450,
+"RG-CH-117": 450,
+"RG-CH-039": 450,
+"RG-CH-116": 750,
+"CS-PP-002": 75,
+"EQ-EL-022": 75,
+"EQ-EL-044": 75,
+"EQ-ME-013": 95,
+"EQ-ME-010": 95,
+"EQ-ME-022": 350,
+"RG-CH-025": 0,
+"TL-ST-016": 150,
+"EQ-EL-023": 350,
+"RG-CH-113": 650,
+"RG-CH-031": 2550,
+"CS-DP-004": 6,
+"GL-TB-018": 8,
+"GL-TB-019": 10,
+"GL-TB-017": 25,
+"TL-ST-017": 35,
+"TL-ST-018": 35,
+"TL-ST-032": 35,
+"TL-ST-022": 35,
+"TL-ST-033": 35,
+"TL-ST-019": 45,
+"TL-ST-025": 5,
+"GL-TB-005": 8,
+"GL-TB-006": 10,
+"GL-TB-007": 950,
+"RG-CH-015": 950,
+"RG-CH-013": 0,
+"EQ-OP-017": 650,
+"RG-CH-029": 3500,
+"RG-CH-033": 2500,
+"EQ-EL-024": 2550,
+"RG-AG-009": 2250,
+"RG-AG-002": 2250,
+"RG-AG-001": 45,
+"EQ-ME-026": 65,
+"CS-PP-006": 2550,
+"RG-AG-012": 2550,
+"RG-AG-004": 0,
+"EQ-EL-037": 150,
+"EQ-EL-025": 2550,
+"RG-AG-010": 0,
+"GL-FL-006": 450,
+"GL-FL-007": 65,
+"GL-FL-008": 95,
+"GL-TB-008": 75,
+"PL-BK-007": 65,
+"PL-BK-008": 75,
+"GL-TB-020": 4850,
+"EQ-EL-035": 1800,
+"TL-ST-020": 95,
+"GL-TB-009": 180,
+"GL-TB-021": 95,
+"EQ-ME-027": 45,
+"TL-ST-021": 75,
+"EQ-ME-018": 75,
+"EQ-ME-011": 95,
+"EQ-ME-025": 450,
+"RG-CH-074": 0,
             // Add more prices for all products
         };
 
