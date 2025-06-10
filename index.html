@@ -1112,7 +1112,6 @@
 {"code": "EQ-ME-011", "name": "Wooden Block 2x2x5cm"},
 {"code": "EQ-ME-025", "name": "Wooden Protractor"},
 {"code": "RG-CH-074", "name": "Zinc Acetate AR 500g"}
-
 ];
 
         // Category mapping
@@ -1357,7 +1356,7 @@
                 card.innerHTML = `
                     <div class="p-4 bg-gray-50 flex items-center justify-center h-48 cursor-pointer product-image">
                         <img src="${product.code}.jpg" alt="${product.name}" class="max-h-full max-w-full object-contain"
-                             onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200/f3f4f6/9ca3af?text=No+Image';">
+                             onerror="this.onerror=null; this.src='${product.code}.png'; this.onerror=null; this.onerror=function() { this.onerror=null; this.src='${product.code}.webp'; this.onerror=null; this.onerror=function() { this.onerror=null; this.src='placeholder.png'; } }">
                     </div>
                     <div class="p-4">
                         <div class="flex items-center justify-between mb-2">
@@ -1436,11 +1435,20 @@
             // Set modal content
             document.getElementById('modalProductCode').textContent = product.code;
             document.getElementById('modalProductName').textContent = product.name;
-            document.getElementById('modalProductImage').src = `${product.code}.jpg`;
-            document.getElementById('modalProductImage').alt = product.name;
-            document.getElementById('modalProductImage').onerror = function() {
+            const modalImage = document.getElementById('modalProductImage');
+            modalImage.src = `${product.code}.jpg`;
+            modalImage.alt = product.name;
+            modalImage.onerror = function() {
                 this.onerror = null;
-                this.src = 'https://via.placeholder.com/400x400/f3f4f6/9ca3af?text=No+Image';
+                this.src = `${product.code}.png`;
+                this.onerror = function() {
+                    this.onerror = null;
+                    this.src = `${product.code}.webp`;
+                    this.onerror = function() {
+                        this.onerror = null;
+                        this.src = 'placeholder.png';
+                    };
+                };
             };
             document.getElementById('modalProductCategory').textContent = product.category ? 
                 `${product.category.name} (${product.category.code})` : 'Unknown';
@@ -2117,8 +2125,7 @@
                     productId: product.code,
                     productName: product.name,
                     price: productPrices[product.code] || 0,
-                    quantity: 1,
-                    imageUrl: `${product.code}.jpg`
+                    quantity: 1
                 });
             }
             
@@ -2168,8 +2175,8 @@
                 
                 return `
                     <div class="cart-item">
-                        <img src="${item.imageUrl}" alt="${item.productName}" class="cart-item-image"
-                             onerror="this.src='https://via.placeholder.com/80x80/f3f4f6/9ca3af?text=No+Image'">
+                        <img src="${item.productId}.jpg" alt="${item.productName}" class="cart-item-image"
+                             onerror="this.onerror=null; this.src='${item.productId}.png'; this.onerror=null; this.onerror=function() { this.onerror=null; this.src='${item.productId}.webp'; this.onerror=null; this.onerror=function() { this.onerror=null; this.src='placeholder.png'; } }">
                         <div class="cart-item-details">
                             <h3 class="font-medium">${item.productName}</h3>
                             <p class="text-sm text-gray-500">${item.productId}</p>
